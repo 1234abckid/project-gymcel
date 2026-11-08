@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Statue Player</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  :root { --bg:#111; --fg:#eee; --muted:#999; --accent:#B3121C; }
+  html,body { margin:0; height:100%; background:var(--bg); color:var(--fg); font:14px/1.4 system-ui,sans-serif; }
+  body.render { background:#000; overflow:hidden; }
+  #wrap { display:flex; flex-direction:column; height:100%; }
+  #stage { flex:1; min-height:0; display:flex; align-items:center; justify-content:center; }
+  body.render #stage { position:fixed; inset:0; }
+  #bar { display:flex; gap:10px; align-items:center; padding:10px 16px; background:#1b1b1b; }
+  body.render #bar { display:none; }
+  #bar input[type=range] { flex:1; accent-color:var(--accent); }
+  button { background:var(--accent); color:#fff; border:0; border-radius:4px; padding:6px 14px; font-weight:600; cursor:pointer; }
+  #time { font-variant-numeric:tabular-nums; color:var(--muted); min-width:92px; text-align:right; }
+  #err { color:#f88; padding:16px; white-space:pre-wrap; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="stage"></div>
+  <div id="bar">
+    <button id="play">Play</button>
+    <input id="scrub" type="range" min="0" max="1000" value="0" aria-label="Timeline">
+    <span id="time">0.00 s</span>
+  </div>
+</div>
+<div id="err"></div>
+<script src="library.js"></script>
+<script src="animator.js"></script>
+<script>
+(async () => {
+  const q = new URLSearchParams(location.search);
+  const render = q.has('render');
+  if (render) document.body.classList.add('render');
+  const sceneUrl = q.get('scene') || '../scenes/demo.json';
+  let scene;
+  try { scene = await (await fetch(sceneUrl)).json(); }
+  catch (e) { document.getElementById('err').textContent = 'Could not load ' + sceneUrl + '\n' + e + '\n(Serve the folder over http: node tools/serve.js)'; return; }
+  const stage = document.getElementById('stage');
+  if (render) { stage.style.width = scene.width + 'px'; stage.style.height = scene.height + 'px'; }
+  const anim = window.anim = new StatueAnimator(stage, scene);
+  await anim.ready;
+  window.READY = true;
+  if (render) return;
+  const dur = scene.duration, scrub = document.getElementById('scrub'), tl = document.getElementById('time'), btn = document.getElementById('play');
+  const audio = scene.audio ? new Audio(new URL(scene.audio, new URL(sceneUrl, location.href)).href) : null;
+  let playing = false, t0 = 0, start = 0;
+  const show = t => { anim.renderAt(t); scrub.value = Math.round(t / dur * 1000); tl.textContent = t.toFixed(2) + ' s'; };
+  const tick = now => {
+    if (!playing) return;
+    let t = audio ? audio.currentTime : t0 + (now - start) / 1000;
+    if (t >= dur) { t = dur; playing = false; btn.textContent = 'Play'; if (audio) audio.pause(); }
+    show(t); if (playing) requestAnimationFrame(tick);
+  };
+  btn.onclick = () => {
+    playing = !playing; btn.textContent = playing ? 'Pause' : 'Play';
+    if (playing) { t0 = scrub.value / 1000 * dur; if (t0 >= dur - 0.01) t0 = 0; start = performance.now(); if (audio) { audio.currentTime = t0; audio.play(); } requestAnimationFrame(tick); }
+    else if (audio) audio.pause();
+  };
+  scrub.oninput = () => { playing = false; btn.textContent = 'Play'; if (audio) audio.pause(); show(scrub.value / 1000 * dur); };
+})();
+</script>
+</body>
+</html>

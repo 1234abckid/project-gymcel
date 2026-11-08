@@ -1,0 +1,348 @@
+{
+ "title": "Demo \u2014 discipline vs motivation (style test)",
+ "width": 1920,
+ "height": 1080,
+ "fps": 30,
+ "duration": 17,
+ "background": {
+  "color": "#ECE4D6",
+  "grain": 0.45,
+  "vignette": 0.3
+ },
+ "talk": [
+  [
+   0.3,
+   2.3
+  ],
+  [
+   2.6,
+   3.6
+  ],
+  [
+   3.9,
+   4.9
+  ],
+  [
+   6.0,
+   9.2
+  ],
+  [
+   9.8,
+   13.2
+  ],
+  [
+   13.6,
+   16.2
+  ]
+ ],
+ "events": [
+  {
+   "t": 0.0,
+   "type": "pose",
+   "name": "pose_stand_34",
+   "x": 0.3,
+   "height": 0.8,
+   "enter": "pop"
+  },
+  {
+   "t": 0.35,
+   "type": "text",
+   "id": "t1",
+   "text": "Most men wait for motivation.",
+   "font": "marker",
+   "size": 92,
+   "x": 0.68,
+   "y": 0.34,
+   "maxWidth": 0.5,
+   "every": 0.26
+  },
+  {
+   "t": 2.5,
+   "type": "text",
+   "id": "t1",
+   "off": true
+  },
+  {
+   "t": 2.5,
+   "type": "pose",
+   "name": "pose_thinking"
+  },
+  {
+   "t": 2.6,
+   "type": "text",
+   "id": "t2",
+   "text": "It never comes.",
+   "font": "caps",
+   "size": 170,
+   "x": 0.68,
+   "y": 0.42,
+   "color": "#B3121C",
+   "every": 0.18
+  },
+  {
+   "t": 3.1,
+   "type": "prop",
+   "id": "u1",
+   "kind": "underline",
+   "from": [
+    0.52,
+    0.5
+   ],
+   "to": [
+    0.84,
+    0.5
+   ],
+   "color": "#141010",
+   "width": 10
+  },
+  {
+   "t": 3.8,
+   "type": "closeup",
+   "name": "head_brood_down"
+  },
+  {
+   "t": 3.8,
+   "type": "text",
+   "id": "t2",
+   "off": true
+  },
+  {
+   "t": 3.8,
+   "type": "prop",
+   "id": "u1",
+   "off": true
+  },
+  {
+   "t": 5.0,
+   "type": "closeup",
+   "name": "head_shout",
+   "shake": true
+  },
+  {
+   "t": 5.0,
+   "type": "shake",
+   "dur": 0.45,
+   "amp": 18
+  },
+  {
+   "t": 5.0,
+   "type": "flash",
+   "color": "#B3121C",
+   "opacity": 0.22,
+   "dur": 0.3
+  },
+  {
+   "t": 5.9,
+   "type": "closeup",
+   "name": null
+  },
+  {
+   "t": 5.9,
+   "type": "bg",
+   "color": "#2A0A0D"
+  },
+  {
+   "t": 5.9,
+   "type": "pose",
+   "name": "pose_pointing",
+   "x": 0.33,
+   "height": 0.82,
+   "enter": "slide-left"
+  },
+  {
+   "t": 6.4,
+   "type": "text",
+   "id": "t3",
+   "text": "DISCIPLINE",
+   "font": "roman",
+   "size": 150,
+   "x": 0.7,
+   "y": 0.4,
+   "color": "#ECE4D6",
+   "every": 0
+  },
+  {
+   "t": 7.0,
+   "type": "text",
+   "id": "t4",
+   "text": "is built, not felt.",
+   "font": "marker",
+   "size": 78,
+   "x": 0.7,
+   "y": 0.55,
+   "color": "#ECE4D6",
+   "every": 0.22
+  },
+  {
+   "t": 7.6,
+   "type": "camera",
+   "zoom": 1.18,
+   "x": 0.52,
+   "y": 0.45,
+   "dur": 1.8,
+   "ease": "inOut"
+  },
+  {
+   "t": 9.6,
+   "type": "camera",
+   "zoom": 1,
+   "x": 0.5,
+   "y": 0.5,
+   "dur": 0
+  },
+  {
+   "t": 9.6,
+   "type": "bg",
+   "color": "#ECE4D6"
+  },
+  {
+   "t": 9.6,
+   "type": "text",
+   "id": "t3",
+   "off": true
+  },
+  {
+   "t": 9.6,
+   "type": "text",
+   "id": "t4",
+   "off": true
+  },
+  {
+   "t": 9.6,
+   "type": "pose",
+   "name": "pose_front_proud",
+   "x": 0.72,
+   "height": 0.72,
+   "enter": "pop"
+  },
+  {
+   "t": 9.6,
+   "type": "pose",
+   "actor": "loser",
+   "name": "pose_kneel",
+   "x": 0.27,
+   "height": 0.78,
+   "enter": "pop",
+   "idle": true
+  },
+  {
+   "t": 10.0,
+   "type": "text",
+   "id": "l1",
+   "text": "MOTIVATED",
+   "font": "caps",
+   "size": 110,
+   "x": 0.27,
+   "y": 0.13,
+   "every": 0
+  },
+  {
+   "t": 10.7,
+   "type": "text",
+   "id": "l2",
+   "text": "DISCIPLINED",
+   "font": "caps",
+   "size": 110,
+   "x": 0.72,
+   "y": 0.1,
+   "every": 0
+  },
+  {
+   "t": 11.4,
+   "type": "prop",
+   "id": "x1",
+   "kind": "x",
+   "at": [
+    0.12,
+    0.26
+   ],
+   "size": 0.06
+  },
+  {
+   "t": 11.9,
+   "type": "prop",
+   "id": "c1",
+   "kind": "check",
+   "at": [
+    0.88,
+    0.24
+   ],
+   "size": 0.06,
+   "color": "#2E7D32"
+  },
+  {
+   "t": 12.3,
+   "type": "nudge",
+   "actor": "hero",
+   "kind": "grow",
+   "dur": 0.5
+  },
+  {
+   "t": 12.3,
+   "type": "nudge",
+   "actor": "loser",
+   "kind": "squash",
+   "dur": 0.5
+  },
+  {
+   "t": 13.4,
+   "type": "pose",
+   "actor": "loser",
+   "name": null
+  },
+  {
+   "t": 13.4,
+   "type": "pose",
+   "name": null
+  },
+  {
+   "t": 13.4,
+   "type": "text",
+   "id": "l1",
+   "off": true
+  },
+  {
+   "t": 13.4,
+   "type": "text",
+   "id": "l2",
+   "off": true
+  },
+  {
+   "t": 13.4,
+   "type": "prop",
+   "id": "x1",
+   "off": true
+  },
+  {
+   "t": 13.4,
+   "type": "prop",
+   "id": "c1",
+   "off": true
+  },
+  {
+   "t": 13.4,
+   "type": "closeup",
+   "name": "head_grin",
+   "side": "right",
+   "enter": "rise"
+  },
+  {
+   "t": 14.0,
+   "type": "text",
+   "id": "end",
+   "text": "Be the statue.",
+   "font": "roman",
+   "size": 104,
+   "x": 0.3,
+   "y": 0.45,
+   "every": 0.3,
+   "screen": true
+  },
+  {
+   "t": 15.6,
+   "type": "closeup",
+   "name": "head_hero",
+   "side": "right"
+  }
+ ]
+}

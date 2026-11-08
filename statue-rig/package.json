@@ -1,0 +1,13 @@
+{
+  "name": "statue-rig",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Code-animated statue character: editable SVG parts + timeline engine + MP4 renderer",
+  "scripts": {
+    "render:demo": "node tools/render.js scenes/demo.json out/demo.mp4",
+    "serve": "node tools/serve.js"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}

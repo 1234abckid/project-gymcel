@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Statue Parts</title>
+<style>
+  html,body { margin:0; background:#ECE4D6; color:#1a1414; font:14px/1.4 system-ui,sans-serif; }
+  header { padding:20px 24px 4px; } h1 { margin:0; font-size:22px; } h2 { margin:24px 24px 8px; font-size:16px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:14px; padding:0 24px 24px; }
+  figure { margin:0; background:#F6F0E5; border:1px solid #d8cdbb; border-radius:6px; padding:8px; }
+  figure svg { width:100%; height:240px; display:block; }
+  figcaption { font-size:12px; } code { font-weight:700; }
+  .pal { display:flex; gap:8px; flex-wrap:wrap; padding:0 24px; }
+  .sw { display:flex; align-items:center; gap:6px; font-size:12px; }
+  .sw i { width:22px; height:22px; border-radius:3px; border:1px solid #0003; display:inline-block; }
+</style>
+</head>
+<body>
+<header><h1>Statue rig — parts library</h1><p>Every pose and expression available to scenes. Names are what you put in <code>"name"</code>.</p></header>
+<h2>Palette (CSS classes — edit in <code>tools/vectorize.py</code> or override per scene with <code>"palette"</code>)</h2>
+<div class="pal" id="pal"></div>
+<h2>Poses</h2><div class="grid" id="poses"></div>
+<h2>Heads / expressions (close-ups)</h2><div class="grid" id="heads"></div>
+<script src="library.js"></script>
+<script>
+  const S = window.STATUE, NS = 'http://www.w3.org/2000/svg';
+  const defs = document.createElement('div'); defs.style.display = 'none';
+  const css = Object.entries(S.palette).map(([r, c]) => `.${r}{fill:${c};stroke:${c}}`).join('') + 'symbol path{stroke-width:.8;stroke-linejoin:round}';
+  defs.innerHTML = `<svg xmlns="${NS}"><style>${css}</style>${S.symbols}</svg>`; document.body.prepend(defs);
+  for (const [r, c] of Object.entries(S.palette)) document.getElementById('pal').insertAdjacentHTML('beforeend', `<span class="sw"><i style="background:${c}"></i><code>.${r}</code> ${c}</span>`);
+  for (const [n, p] of Object.entries(S.parts)) {
+    const [x0, y0, x1, y1] = p.bbox, pad = 10;
+    document.getElementById(p.kind === 'pose' ? 'poses' : 'heads').insertAdjacentHTML('beforeend',
+      `<figure><svg viewBox="${x0 - pad} ${y0 - pad} ${x1 - x0 + 2 * pad} ${y1 - y0 + 2 * pad}" role="img" aria-label="${n}"><use href="#${n}" width="${p.w}" height="${p.h}"/></svg><figcaption><code>${n}</code><br>${p.desc}</figcaption></figure>`);
+  }
+</script>
+</body>
+</html>

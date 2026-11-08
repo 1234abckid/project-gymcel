@@ -1,0 +1,432 @@
+{
+ "_doc": "Crop boxes [x0,y0,x1,y1] in source-sheet pixels. 'holes' = extra background seed points (sheet coords) for enclosed gaps (e.g. between arm and torso). 'clean' = remove background patches outside the outline (opt-in). 'exclude' = rects [x0,y0,x1,y1] in sheet coords forced to background. 'exclude_poly' = polygons in crop coords forced to background.",
+ "pose_front_proud": {
+  "sheet": "sheet1",
+  "box": [
+   60,
+   15,
+   385,
+   905
+  ],
+  "holes": [],
+  "clean": true
+ },
+ "pose_back_proud": {
+  "sheet": "sheet1",
+  "box": [
+   385,
+   15,
+   635,
+   905
+  ],
+  "holes": [],
+  "clean": true
+ },
+ "pose_side_proud": {
+  "sheet": "sheet1",
+  "box": [
+   638,
+   15,
+   835,
+   905
+  ],
+  "holes": [],
+  "clean": true
+ },
+ "pose_stand_34": {
+  "sheet": "sheet2",
+  "box": [
+   22,
+   2,
+   245,
+   505
+  ],
+  "holes": []
+ },
+ "pose_stand_side": {
+  "sheet": "sheet2",
+  "box": [
+   262,
+   2,
+   418,
+   505
+  ],
+  "holes": []
+ },
+ "pose_stand_back": {
+  "sheet": "sheet2",
+  "box": [
+   450,
+   2,
+   648,
+   505
+  ],
+  "holes": []
+ },
+ "pose_stand_front": {
+  "sheet": "sheet2",
+  "box": [
+   650,
+   2,
+   858,
+   505
+  ],
+  "holes": []
+ },
+ "pose_gesture_open": {
+  "sheet": "sheet2",
+  "box": [
+   875,
+   2,
+   1155,
+   505
+  ],
+  "holes": []
+ },
+ "pose_arms_crossed": {
+  "sheet": "sheet2",
+  "box": [
+   20,
+   795,
+   185,
+   1172
+  ],
+  "holes": []
+ },
+ "pose_thinking": {
+  "sheet": "sheet2",
+  "box": [
+   185,
+   795,
+   335,
+   1172
+  ],
+  "holes": []
+ },
+ "pose_pointing": {
+  "sheet": "sheet2",
+  "box": [
+   328,
+   795,
+   568,
+   1172
+  ],
+  "holes": []
+ },
+ "pose_kneel": {
+  "sheet": "sheet2",
+  "box": [
+   492,
+   855,
+   705,
+   1172
+  ],
+  "holes": []
+ },
+ "pose_walk": {
+  "sheet": "sheet2",
+  "box": [
+   698,
+   785,
+   885,
+   1172
+  ],
+  "holes": []
+ },
+ "pose_throne": {
+  "sheet": "sheet2",
+  "box": [
+   888,
+   830,
+   1100,
+   1172
+  ],
+  "holes": []
+ },
+ "head_hero": {
+  "sheet": "sheet1",
+  "box": [
+   855,
+   15,
+   1205,
+   392
+  ],
+  "holes": [],
+  "clean": true,
+  "exclude": [
+   [
+    855,
+    15,
+    903,
+    345
+   ],
+   [
+    855,
+    15,
+    1005,
+    42
+   ],
+   [
+    855,
+    300,
+    935,
+    392
+   ]
+  ],
+  "exclude_poly": [
+   [
+    [
+     0,
+     0
+    ],
+    [
+     350,
+     0
+    ],
+    [
+     350,
+     80
+    ],
+    [
+     302,
+     86
+    ],
+    [
+     266,
+     56
+    ],
+    [
+     226,
+     36
+    ],
+    [
+     182,
+     29
+    ],
+    [
+     162,
+     24
+    ],
+    [
+     132,
+     31
+    ],
+    [
+     102,
+     46
+    ],
+    [
+     74,
+     73
+    ],
+    [
+     55,
+     108
+    ],
+    [
+     49,
+     150
+    ],
+    [
+     56,
+     190
+    ],
+    [
+     73,
+     214
+    ],
+    [
+     92,
+     236
+    ],
+    [
+     62,
+     252
+    ],
+    [
+     0,
+     252
+    ]
+   ],
+   [
+    [
+     40,
+     168
+    ],
+    [
+     66,
+     172
+    ],
+    [
+     98,
+     198
+    ],
+    [
+     110,
+     222
+    ],
+    [
+     100,
+     250
+    ],
+    [
+     96,
+     300
+    ],
+    [
+     40,
+     300
+    ]
+   ]
+  ]
+ },
+ "head_confident": {
+  "sheet": "sheet1",
+  "box": [
+   835,
+   405,
+   1052,
+   648
+  ],
+  "holes": []
+ },
+ "head_brooding": {
+  "sheet": "sheet1",
+  "box": [
+   1070,
+   405,
+   1300,
+   648
+  ],
+  "holes": []
+ },
+ "head_shout": {
+  "sheet": "sheet1",
+  "box": [
+   835,
+   655,
+   1060,
+   898
+  ],
+  "holes": [],
+  "exclude": [
+   [
+    865,
+    655,
+    1060,
+    667
+   ]
+  ]
+ },
+ "head_grin": {
+  "sheet": "sheet1",
+  "box": [
+   1085,
+   655,
+   1305,
+   898
+  ],
+  "holes": [],
+  "exclude": [
+   [
+    1192,
+    655,
+    1275,
+    670
+   ]
+  ]
+ },
+ "head_neutral_34": {
+  "sheet": "sheet2",
+  "box": [
+   20,
+   548,
+   187,
+   760
+  ],
+  "holes": [],
+  "exclude": [
+   [
+    20,
+    548,
+    36,
+    648
+   ]
+  ],
+  "clean": true
+ },
+ "head_proud": {
+  "sheet": "sheet2",
+  "box": [
+   190,
+   548,
+   347,
+   760
+  ],
+  "holes": []
+ },
+ "head_side": {
+  "sheet": "sheet2",
+  "box": [
+   350,
+   548,
+   512,
+   760
+  ],
+  "holes": [],
+  "clean": true
+ },
+ "head_smug_up": {
+  "sheet": "sheet2",
+  "box": [
+   515,
+   548,
+   692,
+   760
+  ],
+  "holes": [],
+  "clean": true
+ },
+ "head_brood_down": {
+  "sheet": "sheet2",
+  "box": [
+   695,
+   548,
+   857,
+   760
+  ],
+  "holes": []
+ },
+ "head_shout_2": {
+  "sheet": "sheet2",
+  "box": [
+   858,
+   548,
+   1012,
+   760
+  ],
+  "holes": [],
+  "clean": true
+ },
+ "head_grin_2": {
+  "sheet": "sheet2",
+  "box": [
+   1012,
+   548,
+   1162,
+   760
+  ],
+  "holes": []
+ },
+ "head_sideeye": {
+  "sheet": "sheet2",
+  "box": [
+   1162,
+   548,
+   1312,
+   760
+  ],
+  "holes": [],
+  "clean": true
+ }
+}
