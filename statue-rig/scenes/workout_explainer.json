@@ -1,0 +1,849 @@
+{
+ "width": 1920,
+ "height": 1080,
+ "fps": 30,
+ "background": {
+  "color": "#ECE4D6",
+  "grain": 0.45,
+  "vignette": 0.3
+ },
+ "title": "What working out actually does to you",
+ "duration": 62.93,
+ "talk": [
+  [
+   0.5,
+   4.77
+  ],
+  [
+   5.17,
+   10.27
+  ],
+  [
+   10.57,
+   11.868
+  ],
+  [
+   12.118,
+   19.635
+  ],
+  [
+   19.985,
+   21.318
+  ],
+  [
+   21.568,
+   28.044
+  ],
+  [
+   28.394,
+   29.884
+  ],
+  [
+   30.134,
+   34.309
+  ],
+  [
+   34.659,
+   36.496
+  ],
+  [
+   36.746,
+   42.424
+  ],
+  [
+   42.774,
+   44.316
+  ],
+  [
+   44.566,
+   48.602
+  ],
+  [
+   49.002,
+   55.198
+  ],
+  [
+   55.598,
+   59.734
+  ]
+ ],
+ "audio": "../out/workout_explainer.wav",
+ "events": [
+  {
+   "type": "pose",
+   "name": "pose_fist_raise",
+   "x": 0.4,
+   "height": 0.8,
+   "enter": "pop",
+   "t": 0.5
+  },
+  {
+   "type": "text",
+   "id": "war",
+   "text": "BUILT FOR WAR",
+   "font": "caps",
+   "size": 150,
+   "x": 0.76,
+   "y": 0.42,
+   "color": "#B3121C",
+   "every": 0,
+   "t": 2.127
+  },
+  {
+   "type": "shake",
+   "dur": 0.3,
+   "amp": 10,
+   "t": 2.127
+  },
+  {
+   "type": "text",
+   "id": "war",
+   "off": true,
+   "t": 3.053
+  },
+  {
+   "type": "bg",
+   "color": "#2A0A0D",
+   "t": 3.053
+  },
+  {
+   "type": "pose",
+   "name": "pose_sit_despair",
+   "x": 0.42,
+   "t": 3.053
+  },
+  {
+   "type": "prop",
+   "id": "phone",
+   "kind": "part",
+   "name": "prop_phone",
+   "at": [
+    0.7,
+    0.42
+   ],
+   "size": 0.3,
+   "rotate": -10,
+   "float": true,
+   "t": 4.055
+  },
+  {
+   "type": "prop",
+   "id": "phx",
+   "kind": "x",
+   "at": [
+    0.7,
+    0.42
+   ],
+   "size": 0.12,
+   "t": 4.455
+  },
+  {
+   "type": "prop",
+   "id": "phone",
+   "off": true,
+   "t": 5.17
+  },
+  {
+   "type": "prop",
+   "id": "phx",
+   "off": true,
+   "t": 5.17
+  },
+  {
+   "type": "bg",
+   "color": "#ECE4D6",
+   "t": 5.17
+  },
+  {
+   "type": "pose",
+   "name": "pose_hands_hips",
+   "x": 0.27,
+   "height": 0.8,
+   "enter": "slide-left",
+   "t": 5.17
+  },
+  {
+   "type": "text",
+   "id": "q",
+   "text": "What working out actually does",
+   "font": "marker",
+   "size": 96,
+   "x": 0.68,
+   "y": 0.36,
+   "maxWidth": 0.5,
+   "every": 0.2,
+   "t": 6.147
+  },
+  {
+   "type": "closeup",
+   "name": "head_smirk",
+   "side": "right",
+   "t": 8.84
+  },
+  {
+   "type": "closeup",
+   "name": null,
+   "t": 9.865
+  },
+  {
+   "type": "nudge",
+   "kind": "hop",
+   "dur": 0.4,
+   "t": 9.865
+  },
+  {
+   "type": "text",
+   "id": "q",
+   "off": true,
+   "exit": "cut",
+   "t": 10.27
+  },
+  {
+   "type": "pose",
+   "name": null,
+   "t": 10.27
+  },
+  {
+   "type": "text",
+   "id": "title1",
+   "text": "#1",
+   "font": "impact",
+   "size": 220,
+   "x": 0.5,
+   "y": 0.3,
+   "color": "#B3121C",
+   "every": 0,
+   "t": 10.57
+  },
+  {
+   "type": "text",
+   "id": "title1b",
+   "text": "YOUR BRAIN",
+   "font": "caps",
+   "size": 170,
+   "x": 0.5,
+   "y": 0.58,
+   "every": 0,
+   "t": 11.402
+  },
+  {
+   "type": "text",
+   "id": "title1",
+   "off": true,
+   "exit": "pop",
+   "t": 12.118
+  },
+  {
+   "type": "text",
+   "id": "title1b",
+   "off": true,
+   "exit": "pop",
+   "t": 12.118
+  },
+  {
+   "type": "pose",
+   "name": "pose_gesture_open",
+   "x": 0.27,
+   "height": 0.8,
+   "enter": "pop",
+   "t": 12.118
+  },
+  {
+   "type": "prop",
+   "id": "sw",
+   "kind": "part",
+   "name": "prop_stopwatch",
+   "at": [
+    0.62,
+    0.32
+   ],
+   "size": 0.2,
+   "rotate": 8,
+   "t": 12.118
+  },
+  {
+   "type": "prop",
+   "id": "bolt",
+   "kind": "svg",
+   "markup": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 140\"><path d=\"M60 4 L14 78 L46 78 L36 136 L86 56 L54 56 L66 4 Z\" fill=\"#E8B23A\" stroke=\"#0B0607\" stroke-width=\"7\" stroke-linejoin=\"round\"/></svg>",
+   "at": [
+    0.8,
+    0.32
+   ],
+   "size": 0.26,
+   "float": true,
+   "t": 14.801
+  },
+  {
+   "type": "text",
+   "id": "dop",
+   "text": "DOPAMINE + ENDORPHINS",
+   "font": "caps",
+   "size": 110,
+   "x": 0.7,
+   "y": 0.66,
+   "every": 0,
+   "t": 14.801
+  },
+  {
+   "type": "closeup",
+   "name": "head_smile",
+   "t": 16.851
+  },
+  {
+   "type": "closeup",
+   "name": "head_glance",
+   "t": 18.319
+  },
+  {
+   "type": "closeup",
+   "name": null,
+   "t": 19.635
+  },
+  {
+   "type": "prop",
+   "id": "sw",
+   "off": true,
+   "exit": "cut",
+   "t": 19.635
+  },
+  {
+   "type": "prop",
+   "id": "bolt",
+   "off": true,
+   "exit": "cut",
+   "t": 19.635
+  },
+  {
+   "type": "text",
+   "id": "dop",
+   "off": true,
+   "exit": "cut",
+   "t": 19.635
+  },
+  {
+   "type": "pose",
+   "name": null,
+   "t": 19.635
+  },
+  {
+   "type": "text",
+   "id": "title2",
+   "text": "#2",
+   "font": "impact",
+   "size": 220,
+   "x": 0.5,
+   "y": 0.3,
+   "color": "#B3121C",
+   "every": 0,
+   "t": 19.985
+  },
+  {
+   "type": "text",
+   "id": "title2b",
+   "text": "YOUR HEART",
+   "font": "caps",
+   "size": 170,
+   "x": 0.5,
+   "y": 0.58,
+   "every": 0,
+   "t": 20.839
+  },
+  {
+   "type": "text",
+   "id": "title2",
+   "off": true,
+   "exit": "pop",
+   "t": 21.568
+  },
+  {
+   "type": "text",
+   "id": "title2b",
+   "off": true,
+   "exit": "pop",
+   "t": 21.568
+  },
+  {
+   "type": "pose",
+   "name": "pose_run",
+   "x": 0.3,
+   "height": 0.8,
+   "enter": "slide-left",
+   "t": 21.568
+  },
+  {
+   "type": "prop",
+   "id": "heart",
+   "kind": "svg",
+   "markup": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 90\"><path d=\"M50 84 C20 62 5 46 5 27 C5 13 16 5 29 5 C38 5 46 10 50 18 C54 10 62 5 71 5 C84 5 95 13 95 27 C95 46 80 62 50 84Z\" fill=\"#9E1A22\" stroke=\"#0B0607\" stroke-width=\"7\" stroke-linejoin=\"round\"/><path d=\"M24 26 C26 18 32 15 38 16\" fill=\"none\" stroke=\"#E2D8D3\" stroke-width=\"6\" stroke-linecap=\"round\"/></svg>",
+   "at": [
+    0.72,
+    0.36
+   ],
+   "size": 0.32,
+   "float": true,
+   "t": 22.874
+  },
+  {
+   "type": "nudge",
+   "kind": "grow",
+   "dur": 0.4,
+   "t": 22.874
+  },
+  {
+   "type": "text",
+   "id": "rhr",
+   "text": "Lower resting heart rate",
+   "font": "marker",
+   "size": 84,
+   "x": 0.72,
+   "y": 0.68,
+   "maxWidth": 0.45,
+   "every": 0.18,
+   "t": 26.373
+  },
+  {
+   "type": "prop",
+   "id": "heart",
+   "off": true,
+   "exit": "pop",
+   "t": 28.044
+  },
+  {
+   "type": "text",
+   "id": "rhr",
+   "off": true,
+   "exit": "cut",
+   "t": 28.044
+  },
+  {
+   "type": "pose",
+   "name": null,
+   "t": 28.044
+  },
+  {
+   "type": "text",
+   "id": "title3",
+   "text": "#3",
+   "font": "impact",
+   "size": 220,
+   "x": 0.5,
+   "y": 0.3,
+   "color": "#B3121C",
+   "every": 0,
+   "t": 28.394
+  },
+  {
+   "type": "text",
+   "id": "title3b",
+   "text": "DEEP SLEEP",
+   "font": "caps",
+   "size": 170,
+   "x": 0.5,
+   "y": 0.58,
+   "every": 0,
+   "t": 29.348
+  },
+  {
+   "type": "text",
+   "id": "title3",
+   "off": true,
+   "exit": "pop",
+   "t": 30.134
+  },
+  {
+   "type": "text",
+   "id": "title3b",
+   "off": true,
+   "exit": "pop",
+   "t": 30.134
+  },
+  {
+   "type": "pose",
+   "name": "pose_stretch",
+   "x": 0.3,
+   "height": 0.8,
+   "enter": "pop",
+   "t": 30.134
+  },
+  {
+   "type": "closeup",
+   "name": "head_tired",
+   "side": "right",
+   "t": 31.818
+  },
+  {
+   "type": "closeup",
+   "name": null,
+   "t": 33.271
+  },
+  {
+   "type": "bg",
+   "color": "#191E24",
+   "t": 33.271
+  },
+  {
+   "type": "prop",
+   "id": "moon",
+   "kind": "svg",
+   "markup": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><path d=\"M62 6 A46 46 0 1 0 94 70 A38 38 0 1 1 62 6 Z\" fill=\"#E2D8D3\" stroke=\"#0B0607\" stroke-width=\"6\" stroke-linejoin=\"round\"/><circle cx=\"20\" cy=\"18\" r=\"4\" fill=\"#E2D8D3\"/><circle cx=\"84\" cy=\"22\" r=\"3\" fill=\"#E2D8D3\"/></svg>",
+   "at": [
+    0.72,
+    0.34
+   ],
+   "size": 0.3,
+   "float": true,
+   "t": 33.271
+  },
+  {
+   "type": "text",
+   "id": "zz",
+   "text": "Z z z",
+   "font": "marker",
+   "size": 110,
+   "x": 0.72,
+   "y": 0.68,
+   "color": "#ECE4D6",
+   "every": 0.18,
+   "t": 33.779
+  },
+  {
+   "type": "prop",
+   "id": "moon",
+   "off": true,
+   "exit": "cut",
+   "t": 34.309
+  },
+  {
+   "type": "text",
+   "id": "zz",
+   "off": true,
+   "exit": "cut",
+   "t": 34.309
+  },
+  {
+   "type": "bg",
+   "color": "#ECE4D6",
+   "t": 34.309
+  },
+  {
+   "type": "pose",
+   "name": null,
+   "t": 34.309
+  },
+  {
+   "type": "text",
+   "id": "title4",
+   "text": "#4",
+   "font": "impact",
+   "size": 220,
+   "x": 0.5,
+   "y": 0.3,
+   "color": "#B3121C",
+   "every": 0,
+   "t": 34.659
+  },
+  {
+   "type": "text",
+   "id": "title4b",
+   "text": "STRENGTH THAT LASTS",
+   "font": "caps",
+   "size": 170,
+   "x": 0.5,
+   "y": 0.58,
+   "every": 0,
+   "t": 35.987
+  },
+  {
+   "type": "text",
+   "id": "title4",
+   "off": true,
+   "exit": "pop",
+   "t": 36.746
+  },
+  {
+   "type": "text",
+   "id": "title4b",
+   "off": true,
+   "exit": "pop",
+   "t": 36.746
+  },
+  {
+   "type": "pose",
+   "name": "pose_kneel",
+   "x": 0.3,
+   "height": 0.8,
+   "enter": "pop",
+   "t": 36.746
+  },
+  {
+   "type": "text",
+   "id": "loss",
+   "text": "MUSCLE LOSS AFTER 30",
+   "font": "caps",
+   "size": 120,
+   "x": 0.7,
+   "y": 0.4,
+   "color": "#B3121C",
+   "every": 0,
+   "t": 38.656
+  },
+  {
+   "type": "text",
+   "id": "loss",
+   "off": true,
+   "t": 40.379
+  },
+  {
+   "type": "pose",
+   "name": "pose_fist_raise",
+   "t": 40.379
+  },
+  {
+   "type": "prop",
+   "id": "bb",
+   "kind": "part",
+   "name": "prop_barbell",
+   "at": [
+    0.7,
+    0.42
+   ],
+   "width": 0.42,
+   "t": 40.379
+  },
+  {
+   "type": "prop",
+   "id": "db",
+   "kind": "part",
+   "name": "prop_dumbbell",
+   "at": [
+    0.7,
+    0.72
+   ],
+   "size": 0.17,
+   "rotate": -10,
+   "t": 41.509
+  },
+  {
+   "type": "shake",
+   "dur": 0.35,
+   "amp": 14,
+   "t": 41.859
+  },
+  {
+   "type": "prop",
+   "id": "bb",
+   "off": true,
+   "exit": "pop",
+   "t": 42.424
+  },
+  {
+   "type": "prop",
+   "id": "db",
+   "off": true,
+   "exit": "pop",
+   "t": 42.424
+  },
+  {
+   "type": "pose",
+   "name": null,
+   "t": 42.424
+  },
+  {
+   "type": "text",
+   "id": "title5",
+   "text": "#5",
+   "font": "impact",
+   "size": 220,
+   "x": 0.5,
+   "y": 0.3,
+   "color": "#B3121C",
+   "every": 0,
+   "t": 42.774
+  },
+  {
+   "type": "text",
+   "id": "title5b",
+   "text": "CONFIDENCE",
+   "font": "caps",
+   "size": 170,
+   "x": 0.5,
+   "y": 0.58,
+   "every": 0,
+   "t": 43.508
+  },
+  {
+   "type": "text",
+   "id": "title5",
+   "off": true,
+   "exit": "pop",
+   "t": 44.566
+  },
+  {
+   "type": "text",
+   "id": "title5b",
+   "off": true,
+   "exit": "pop",
+   "t": 44.566
+  },
+  {
+   "type": "pose",
+   "name": "pose_front_proud",
+   "x": 0.3,
+   "height": 0.8,
+   "enter": "pop",
+   "t": 44.566
+  },
+  {
+   "type": "closeup",
+   "name": "head_chin_up",
+   "side": "right",
+   "t": 45.878
+  },
+  {
+   "type": "text",
+   "id": "pr",
+   "text": "Proof you keep your promises.",
+   "font": "marker",
+   "size": 88,
+   "x": 0.3,
+   "y": 0.42,
+   "maxWidth": 0.42,
+   "every": 0.2,
+   "screen": true,
+   "t": 45.878
+  },
+  {
+   "type": "closeup",
+   "name": null,
+   "t": 48.602
+  },
+  {
+   "type": "text",
+   "id": "pr",
+   "off": true,
+   "exit": "cut",
+   "t": 48.602
+  },
+  {
+   "type": "pose",
+   "name": null,
+   "t": 48.602
+  },
+  {
+   "type": "pose",
+   "name": "pose_pointing",
+   "x": 0.2,
+   "height": 0.8,
+   "enter": "slide-left",
+   "t": 49.002
+  },
+  {
+   "type": "prop",
+   "id": "wb",
+   "kind": "part",
+   "name": "prop_whiteboard",
+   "at": [
+    0.64,
+    0.5
+   ],
+   "size": 0.78,
+   "layer": "back",
+   "enter": "pop",
+   "text": "3x a week: Push-ups. Squats. Long walk.",
+   "font": "marker",
+   "every": 0.3,
+   "textDelay": 0.771,
+   "t": 49.918
+  },
+  {
+   "type": "prop",
+   "id": "ck",
+   "kind": "check",
+   "at": [
+    0.86,
+    0.2
+   ],
+   "size": 0.07,
+   "color": "#2E7D32",
+   "t": 54.523
+  },
+  {
+   "type": "prop",
+   "id": "wb",
+   "off": true,
+   "exit": "pop",
+   "t": 55.198
+  },
+  {
+   "type": "prop",
+   "id": "ck",
+   "off": true,
+   "exit": "cut",
+   "t": 55.198
+  },
+  {
+   "type": "pose",
+   "name": null,
+   "t": 55.198
+  },
+  {
+   "type": "bg",
+   "color": "#2A0A0D",
+   "t": 55.598
+  },
+  {
+   "type": "pose",
+   "name": "pose_point_up",
+   "x": 0.33,
+   "height": 0.8,
+   "enter": "rise",
+   "t": 55.598
+  },
+  {
+   "type": "text",
+   "id": "d1",
+   "text": "DISCIPLINE BUILDS THE BODY.",
+   "font": "roman",
+   "size": 84,
+   "x": 0.73,
+   "y": 0.4,
+   "maxWidth": 0.4,
+   "color": "#ECE4D6",
+   "every": 0.25,
+   "t": 55.598
+  },
+  {
+   "type": "text",
+   "id": "d1",
+   "off": true,
+   "t": 58.712
+  },
+  {
+   "type": "closeup",
+   "name": "head_yell",
+   "side": "right",
+   "shake": true,
+   "t": 58.712
+  },
+  {
+   "type": "shake",
+   "dur": 0.45,
+   "amp": 18,
+   "t": 58.712
+  },
+  {
+   "type": "text",
+   "id": "endt",
+   "text": "NOW GET MOVING.",
+   "font": "impact",
+   "size": 130,
+   "x": 0.3,
+   "y": 0.45,
+   "color": "#B3121C",
+   "every": 0.22,
+   "screen": true,
+   "t": 58.712
+  }
+ ]
+}

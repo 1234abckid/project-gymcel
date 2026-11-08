@@ -1,0 +1,892 @@
+{
+ "name": "workout_explainer",
+ "title": "What working out actually does to you",
+ "voice": {
+  "voice": "am_michael",
+  "speed": 1.06,
+  "fx": "coach"
+ },
+ "music": {
+  "file": "music_beat",
+  "gain_db": -22,
+  "duck_db": -8
+ },
+ "scene": {
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "background": {
+   "color": "#ECE4D6",
+   "grain": 0.45,
+   "vignette": 0.3
+  }
+ },
+ "lead_in": 0.5,
+ "tail": 2.0,
+ "beats": [
+  {
+   "say": "Listen up. You've got a body built for war... and you're using it to scroll.",
+   "pause": 0.4,
+   "events": [
+    {
+     "when": 0,
+     "type": "pose",
+     "name": "pose_fist_raise",
+     "x": 0.4,
+     "height": 0.8,
+     "enter": "pop"
+    },
+    {
+     "when": "@built",
+     "type": "text",
+     "id": "war",
+     "text": "BUILT FOR WAR",
+     "font": "caps",
+     "size": 150,
+     "x": 0.76,
+     "y": 0.42,
+     "color": "#B3121C",
+     "every": 0
+    },
+    {
+     "when": "@built",
+     "type": "shake",
+     "dur": 0.3,
+     "amp": 10
+    },
+    {
+     "when": "@and",
+     "type": "text",
+     "id": "war",
+     "off": true
+    },
+    {
+     "when": "@and",
+     "type": "bg",
+     "color": "#2A0A0D"
+    },
+    {
+     "when": "@and",
+     "type": "pose",
+     "name": "pose_sit_despair",
+     "x": 0.42,
+     "sfx": false
+    },
+    {
+     "when": "@scroll-0.15",
+     "type": "prop",
+     "id": "phone",
+     "kind": "part",
+     "name": "prop_phone",
+     "at": [
+      0.7,
+      0.42
+     ],
+     "size": 0.3,
+     "rotate": -10,
+     "float": true
+    },
+    {
+     "when": "@scroll+0.25",
+     "type": "prop",
+     "id": "phx",
+     "kind": "x",
+     "at": [
+      0.7,
+      0.42
+     ],
+     "size": 0.12
+    }
+   ]
+  },
+  {
+   "say": "Today, I'm gonna show you what working out actually does to you. No fluff. Let's go.",
+   "pause": 0.3,
+   "events": [
+    {
+     "when": 0,
+     "type": "prop",
+     "id": "phone",
+     "off": true
+    },
+    {
+     "when": 0,
+     "type": "prop",
+     "id": "phx",
+     "off": true
+    },
+    {
+     "when": 0,
+     "type": "bg",
+     "color": "#ECE4D6"
+    },
+    {
+     "when": 0,
+     "type": "pose",
+     "name": "pose_hands_hips",
+     "x": 0.27,
+     "height": 0.8,
+     "enter": "slide-left"
+    },
+    {
+     "when": "@show",
+     "type": "text",
+     "id": "q",
+     "text": "What working out actually does",
+     "font": "marker",
+     "size": 96,
+     "x": 0.68,
+     "y": 0.36,
+     "maxWidth": 0.5,
+     "every": 0.2
+    },
+    {
+     "when": "@no",
+     "type": "closeup",
+     "name": "head_smirk",
+     "side": "right"
+    },
+    {
+     "when": "@go",
+     "type": "closeup",
+     "name": null
+    },
+    {
+     "when": "@go",
+     "type": "nudge",
+     "kind": "hop",
+     "dur": 0.4
+    },
+    {
+     "when": "end",
+     "type": "text",
+     "id": "q",
+     "off": true,
+     "exit": "cut"
+    },
+    {
+     "when": "end",
+     "type": "pose",
+     "name": null
+    }
+   ]
+  },
+  {
+   "say": "Number 1. Your brain.",
+   "pause": 0.25,
+   "events": [
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title1",
+     "text": "#1",
+     "font": "impact",
+     "size": 220,
+     "x": 0.5,
+     "y": 0.3,
+     "color": "#B3121C",
+     "every": 0
+    },
+    {
+     "when": "@brain",
+     "type": "text",
+     "id": "title1b",
+     "text": "YOUR BRAIN",
+     "font": "caps",
+     "size": 170,
+     "x": 0.5,
+     "y": 0.58,
+     "every": 0
+    }
+   ]
+  },
+  {
+   "say": "Thirty minutes of training floods your head with dopamine and endorphins. That's a natural mood boost. No prescription needed.",
+   "pause": 0.35,
+   "events": [
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title1",
+     "off": true,
+     "exit": "pop"
+    },
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title1b",
+     "off": true,
+     "exit": "pop"
+    },
+    {
+     "when": 0,
+     "type": "pose",
+     "name": "pose_gesture_open",
+     "x": 0.27,
+     "height": 0.8,
+     "enter": "pop"
+    },
+    {
+     "when": "@thirty",
+     "type": "prop",
+     "id": "sw",
+     "kind": "part",
+     "name": "prop_stopwatch",
+     "at": [
+      0.62,
+      0.32
+     ],
+     "size": 0.2,
+     "rotate": 8
+    },
+    {
+     "when": "@dopamine",
+     "type": "prop",
+     "id": "bolt",
+     "kind": "svg",
+     "markup": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 140\"><path d=\"M60 4 L14 78 L46 78 L36 136 L86 56 L54 56 L66 4 Z\" fill=\"#E8B23A\" stroke=\"#0B0607\" stroke-width=\"7\" stroke-linejoin=\"round\"/></svg>",
+     "at": [
+      0.8,
+      0.32
+     ],
+     "size": 0.26,
+     "float": true
+    },
+    {
+     "when": "@dopamine",
+     "type": "text",
+     "id": "dop",
+     "text": "DOPAMINE + ENDORPHINS",
+     "font": "caps",
+     "size": 110,
+     "x": 0.7,
+     "y": 0.66,
+     "every": 0
+    },
+    {
+     "when": "@natural",
+     "type": "closeup",
+     "name": "head_smile"
+    },
+    {
+     "when": "@prescription",
+     "type": "closeup",
+     "name": "head_glance"
+    },
+    {
+     "when": "end",
+     "type": "closeup",
+     "name": null
+    },
+    {
+     "when": "end",
+     "type": "prop",
+     "id": "sw",
+     "off": true,
+     "exit": "cut"
+    },
+    {
+     "when": "end",
+     "type": "prop",
+     "id": "bolt",
+     "off": true,
+     "exit": "cut"
+    },
+    {
+     "when": "end",
+     "type": "text",
+     "id": "dop",
+     "off": true,
+     "exit": "cut"
+    },
+    {
+     "when": "end",
+     "type": "pose",
+     "name": null
+    }
+   ]
+  },
+  {
+   "say": "Number 2. Your heart.",
+   "pause": 0.25,
+   "events": [
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title2",
+     "text": "#2",
+     "font": "impact",
+     "size": 220,
+     "x": 0.5,
+     "y": 0.3,
+     "color": "#B3121C",
+     "every": 0
+    },
+    {
+     "when": "@heart",
+     "type": "text",
+     "id": "title2b",
+     "text": "YOUR HEART",
+     "font": "caps",
+     "size": 170,
+     "x": 0.5,
+     "y": 0.58,
+     "every": 0
+    }
+   ]
+  },
+  {
+   "say": "Every workout makes it stronger, so it pumps more blood with less effort. Your resting heart rate drops.",
+   "pause": 0.35,
+   "events": [
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title2",
+     "off": true,
+     "exit": "pop"
+    },
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title2b",
+     "off": true,
+     "exit": "pop"
+    },
+    {
+     "when": 0,
+     "type": "pose",
+     "name": "pose_run",
+     "x": 0.3,
+     "height": 0.8,
+     "enter": "slide-left"
+    },
+    {
+     "when": "@stronger",
+     "type": "prop",
+     "id": "heart",
+     "kind": "svg",
+     "markup": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 90\"><path d=\"M50 84 C20 62 5 46 5 27 C5 13 16 5 29 5 C38 5 46 10 50 18 C54 10 62 5 71 5 C84 5 95 13 95 27 C95 46 80 62 50 84Z\" fill=\"#9E1A22\" stroke=\"#0B0607\" stroke-width=\"7\" stroke-linejoin=\"round\"/><path d=\"M24 26 C26 18 32 15 38 16\" fill=\"none\" stroke=\"#E2D8D3\" stroke-width=\"6\" stroke-linecap=\"round\"/></svg>",
+     "at": [
+      0.72,
+      0.36
+     ],
+     "size": 0.32,
+     "float": true
+    },
+    {
+     "when": "@stronger",
+     "type": "nudge",
+     "kind": "grow",
+     "dur": 0.4
+    },
+    {
+     "when": "@resting",
+     "type": "text",
+     "id": "rhr",
+     "text": "Lower resting heart rate",
+     "font": "marker",
+     "size": 84,
+     "x": 0.72,
+     "y": 0.68,
+     "maxWidth": 0.45,
+     "every": 0.18
+    },
+    {
+     "when": "end",
+     "type": "prop",
+     "id": "heart",
+     "off": true,
+     "exit": "pop"
+    },
+    {
+     "when": "end",
+     "type": "text",
+     "id": "rhr",
+     "off": true,
+     "exit": "cut"
+    },
+    {
+     "when": "end",
+     "type": "pose",
+     "name": null
+    }
+   ]
+  },
+  {
+   "say": "Number 3. Deep sleep.",
+   "pause": 0.25,
+   "events": [
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title3",
+     "text": "#3",
+     "font": "impact",
+     "size": 220,
+     "x": 0.5,
+     "y": 0.3,
+     "color": "#B3121C",
+     "every": 0
+    },
+    {
+     "when": "@sleep",
+     "type": "text",
+     "id": "title3b",
+     "text": "DEEP SLEEP",
+     "font": "caps",
+     "size": 170,
+     "x": 0.5,
+     "y": 0.58,
+     "every": 0
+    }
+   ]
+  },
+  {
+   "say": "Train hard in the day, and you fall asleep faster and sleep deeper at night.",
+   "pause": 0.35,
+   "events": [
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title3",
+     "off": true,
+     "exit": "pop"
+    },
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title3b",
+     "off": true,
+     "exit": "pop"
+    },
+    {
+     "when": 0,
+     "type": "pose",
+     "name": "pose_stretch",
+     "x": 0.3,
+     "height": 0.8,
+     "enter": "pop"
+    },
+    {
+     "when": "@fall",
+     "type": "closeup",
+     "name": "head_tired",
+     "side": "right"
+    },
+    {
+     "when": "@deeper",
+     "type": "closeup",
+     "name": null
+    },
+    {
+     "when": "@deeper",
+     "type": "bg",
+     "color": "#191E24"
+    },
+    {
+     "when": "@deeper",
+     "type": "prop",
+     "id": "moon",
+     "kind": "svg",
+     "markup": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><path d=\"M62 6 A46 46 0 1 0 94 70 A38 38 0 1 1 62 6 Z\" fill=\"#E2D8D3\" stroke=\"#0B0607\" stroke-width=\"6\" stroke-linejoin=\"round\"/><circle cx=\"20\" cy=\"18\" r=\"4\" fill=\"#E2D8D3\"/><circle cx=\"84\" cy=\"22\" r=\"3\" fill=\"#E2D8D3\"/></svg>",
+     "at": [
+      0.72,
+      0.34
+     ],
+     "size": 0.3,
+     "float": true
+    },
+    {
+     "when": "@night",
+     "type": "text",
+     "id": "zz",
+     "text": "Z z z",
+     "font": "marker",
+     "size": 110,
+     "x": 0.72,
+     "y": 0.68,
+     "color": "#ECE4D6",
+     "every": 0.18
+    },
+    {
+     "when": "end",
+     "type": "prop",
+     "id": "moon",
+     "off": true,
+     "exit": "cut"
+    },
+    {
+     "when": "end",
+     "type": "text",
+     "id": "zz",
+     "off": true,
+     "exit": "cut"
+    },
+    {
+     "when": "end",
+     "type": "bg",
+     "color": "#ECE4D6",
+     "sfx": false
+    },
+    {
+     "when": "end",
+     "type": "pose",
+     "name": null
+    }
+   ]
+  },
+  {
+   "say": "Number 4. Strength that lasts.",
+   "pause": 0.25,
+   "events": [
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title4",
+     "text": "#4",
+     "font": "impact",
+     "size": 220,
+     "x": 0.5,
+     "y": 0.3,
+     "color": "#B3121C",
+     "every": 0
+    },
+    {
+     "when": "@lasts",
+     "type": "text",
+     "id": "title4b",
+     "text": "STRENGTH THAT LASTS",
+     "font": "caps",
+     "size": 170,
+     "x": 0.5,
+     "y": 0.58,
+     "every": 0
+    }
+   ]
+  },
+  {
+   "say": "After about thirty, you slowly lose muscle every decade. Lifting is how you fight back.",
+   "pause": 0.35,
+   "events": [
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title4",
+     "off": true,
+     "exit": "pop"
+    },
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title4b",
+     "off": true,
+     "exit": "pop"
+    },
+    {
+     "when": 0,
+     "type": "pose",
+     "name": "pose_kneel",
+     "x": 0.3,
+     "height": 0.8,
+     "enter": "pop"
+    },
+    {
+     "when": "@lose",
+     "type": "text",
+     "id": "loss",
+     "text": "MUSCLE LOSS AFTER 30",
+     "font": "caps",
+     "size": 120,
+     "x": 0.7,
+     "y": 0.4,
+     "color": "#B3121C",
+     "every": 0
+    },
+    {
+     "when": "@lifting",
+     "type": "text",
+     "id": "loss",
+     "off": true
+    },
+    {
+     "when": "@lifting",
+     "type": "pose",
+     "name": "pose_fist_raise",
+     "sfx": "pop"
+    },
+    {
+     "when": "@lifting",
+     "type": "prop",
+     "id": "bb",
+     "kind": "part",
+     "name": "prop_barbell",
+     "at": [
+      0.7,
+      0.42
+     ],
+     "width": 0.42
+    },
+    {
+     "when": "@fight",
+     "type": "prop",
+     "id": "db",
+     "kind": "part",
+     "name": "prop_dumbbell",
+     "at": [
+      0.7,
+      0.72
+     ],
+     "size": 0.17,
+     "rotate": -10
+    },
+    {
+     "when": "@back",
+     "type": "shake",
+     "dur": 0.35,
+     "amp": 14
+    },
+    {
+     "when": "end",
+     "type": "prop",
+     "id": "bb",
+     "off": true,
+     "exit": "pop"
+    },
+    {
+     "when": "end",
+     "type": "prop",
+     "id": "db",
+     "off": true,
+     "exit": "pop"
+    },
+    {
+     "when": "end",
+     "type": "pose",
+     "name": null
+    }
+   ]
+  },
+  {
+   "say": "Number 5. Confidence.",
+   "pause": 0.25,
+   "events": [
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title5",
+     "text": "#5",
+     "font": "impact",
+     "size": 220,
+     "x": 0.5,
+     "y": 0.3,
+     "color": "#B3121C",
+     "every": 0
+    },
+    {
+     "when": "@confidence",
+     "type": "text",
+     "id": "title5b",
+     "text": "CONFIDENCE",
+     "font": "caps",
+     "size": 170,
+     "x": 0.5,
+     "y": 0.58,
+     "every": 0
+    }
+   ]
+  },
+  {
+   "say": "Every rep you finish is proof that you keep your promises to yourself.",
+   "pause": 0.4,
+   "events": [
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title5",
+     "off": true,
+     "exit": "pop"
+    },
+    {
+     "when": 0,
+     "type": "text",
+     "id": "title5b",
+     "off": true,
+     "exit": "pop"
+    },
+    {
+     "when": 0,
+     "type": "pose",
+     "name": "pose_front_proud",
+     "x": 0.3,
+     "height": 0.8,
+     "enter": "pop"
+    },
+    {
+     "when": "@proof",
+     "type": "closeup",
+     "name": "head_chin_up",
+     "side": "right"
+    },
+    {
+     "when": "@proof",
+     "type": "text",
+     "id": "pr",
+     "text": "Proof you keep your promises.",
+     "font": "marker",
+     "size": 88,
+     "x": 0.3,
+     "y": 0.42,
+     "maxWidth": 0.42,
+     "every": 0.2,
+     "screen": true
+    },
+    {
+     "when": "end",
+     "type": "closeup",
+     "name": null
+    },
+    {
+     "when": "end",
+     "type": "text",
+     "id": "pr",
+     "off": true,
+     "exit": "cut"
+    },
+    {
+     "when": "end",
+     "type": "pose",
+     "name": null
+    }
+   ]
+  },
+  {
+   "say": "You don't need a fancy gym. Three sessions a week. Push-ups, squats, and a long walk. Just show up.",
+   "pause": 0.4,
+   "events": [
+    {
+     "when": 0,
+     "type": "pose",
+     "name": "pose_pointing",
+     "x": 0.2,
+     "height": 0.8,
+     "enter": "slide-left"
+    },
+    {
+     "when": "@fancy",
+     "type": "prop",
+     "id": "wb",
+     "kind": "part",
+     "name": "prop_whiteboard",
+     "at": [
+      0.64,
+      0.5
+     ],
+     "size": 0.78,
+     "layer": "back",
+     "enter": "pop",
+     "text": "3x a week: Push-ups. Squats. Long walk.",
+     "font": "marker",
+     "every": 0.3,
+     "textDelay": "@three"
+    },
+    {
+     "when": "@show",
+     "type": "prop",
+     "id": "ck",
+     "kind": "check",
+     "at": [
+      0.86,
+      0.2
+     ],
+     "size": 0.07,
+     "color": "#2E7D32"
+    },
+    {
+     "when": "end",
+     "type": "prop",
+     "id": "wb",
+     "off": true,
+     "exit": "pop"
+    },
+    {
+     "when": "end",
+     "type": "prop",
+     "id": "ck",
+     "off": true,
+     "exit": "cut"
+    },
+    {
+     "when": "end",
+     "type": "pose",
+     "name": null
+    }
+   ]
+  },
+  {
+   "say": "Discipline builds the body. The body builds the man. Now get moving.",
+   "pause": 0.2,
+   "hold": 1.0,
+   "events": [
+    {
+     "when": 0,
+     "type": "bg",
+     "color": "#2A0A0D"
+    },
+    {
+     "when": 0,
+     "type": "pose",
+     "name": "pose_point_up",
+     "x": 0.33,
+     "height": 0.8,
+     "enter": "rise"
+    },
+    {
+     "when": "@discipline",
+     "type": "text",
+     "id": "d1",
+     "text": "DISCIPLINE BUILDS THE BODY.",
+     "font": "roman",
+     "size": 84,
+     "x": 0.73,
+     "y": 0.4,
+     "maxWidth": 0.4,
+     "color": "#ECE4D6",
+     "every": 0.25
+    },
+    {
+     "when": "@now",
+     "type": "text",
+     "id": "d1",
+     "off": true
+    },
+    {
+     "when": "@now",
+     "type": "closeup",
+     "name": "head_yell",
+     "side": "right",
+     "shake": true
+    },
+    {
+     "when": "@now",
+     "type": "shake",
+     "dur": 0.45,
+     "amp": 18
+    },
+    {
+     "when": "@now",
+     "type": "text",
+     "id": "endt",
+     "text": "NOW GET MOVING.",
+     "font": "impact",
+     "size": 130,
+     "x": 0.3,
+     "y": 0.45,
+     "color": "#B3121C",
+     "every": 0.22,
+     "screen": true
+    }
+   ]
+  }
+ ]
+}

@@ -17,8 +17,12 @@ statue-rig/
 ├── scenes/demo.json             example scene (the 17 s style test)
 ├── scenes/showcase_v2.json      set-2 poses and expressions in motion
 ├── scenes/props_demo.json       props: whiteboard lesson, floating gym props, chalkboard
+├── productions/                 narrated videos: script + timed visuals → produce.py
+├── assets/sfx/                  synthesised sound effects + music bed (tools/sfx.py)
 └── tools/
     ├── render.js                scene JSON → MP4 or PNG still (Playwright + ffmpeg)
+    ├── produce.py               production script → TTS voiceover + auto SFX + music mix + timed scene
+    ├── sfx.py                   synthesises the sound-effect library
     ├── serve.js                 local server for player.html / gallery.html
     ├── cutout.py                cuts poses/heads out of the sheets (BiRefNet segmentation + clean-up)
     ├── vectorize.py             PNG → palette-classed SVG (vtracer)
@@ -53,6 +57,52 @@ node tools/serve.js
 Then open `http://localhost:8080/engine/player.html?scene=/scenes/demo.json` (scrub and play), or `/engine/gallery.html` to browse every part.
 
 Fast low-res preview: add `--scale 0.5`. Render a slice: `--from 3 --to 8`.
+
+## Making a narrated video (voiceover + sound effects)
+
+```bash
+pip install kokoro-onnx soundfile scipy numpy
+```
+
+```bash
+mkdir -p work/tts && curl -L -o work/tts/kokoro-v1.0.onnx https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx && curl -L -o work/tts/voices-v1.0.bin https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
+```
+
+```bash
+python3 productions/workout_explainer.py
+```
+
+```bash
+python3 tools/produce.py productions/workout_explainer.json
+```
+
+```bash
+node tools/render.js scenes/workout_explainer.json out/workout_explainer.mp4
+```
+
+- **Production files** (`productions/*.py` → `.json`): one *beat* per voiceover line, each with the visual events timed inside it.
+  - `"when"` sets the timing: seconds after the line starts, `"@word"` (when that word is spoken), `"@word+0.2"`, or `"end"`.
+  - `"at"` stays the on-screen position for props.
+- **Voice:** Kokoro TTS runs locally, voice `am_michael` at 1.06× speed, with a "coach" chain on top (high-pass, presence boost, compression, limiter). Other male voices: `am_fenrir`, `am_onyx`, `am_eric`, `am_liam`, `am_puck`, `bm_george`, `bm_lewis` (British). Change `"voice"` in the production. Lines are cached, so re-running after a visual-only change is instant.
+- **Sound effects** are added automatically:
+
+  | Event | Sound |
+  |---|---|
+  | Pop-in | `pop` |
+  | Slide | `whoosh` |
+  | Close-up cut | `whip` |
+  | Shake | `impact` |
+  | Background to dark | `boom` |
+  | Title text | `swoosh` |
+  | Handwritten words | soft `tick` |
+  | Board landing | `thud` |
+  | X mark | `scribble` + `buzz` |
+  | Check mark | `scribble` + `ding` |
+
+  Override per event with `"sfx": "name"` or `"sfx": false`, or add extras in a beat's `"sfx": [...]`. All effects are synthesised by `tools/sfx.py` into `assets/sfx/`, so there are no samples and no licences.
+- **Music:** `music_beat` (96 bpm drums and bass, also synthesised) dips by 8 dB under the voice. The final mix is loudness-normalised to −14 LUFS, YouTube's target.
+- **Using your own recorded voiceover instead of TTS:** make the scene by hand, set `"audio"` to your file, and set `"talk"` to the ranges where you speak.
+- **Word timing** is estimated from the script, not detected from the audio, so a visual can land a fraction of a second early or late. Nudge it with `"@word+0.2"`.
 
 ## How he is built
 
