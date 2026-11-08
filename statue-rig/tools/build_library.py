@@ -24,7 +24,7 @@ from vectorize import PALETTE  # noqa: E402
 BOXES = json.load(open(os.path.join(ROOT, "tools", "boxes.json")))
 
 # Standing body height (head top -> sole) in *source sheet* pixels, measured per drawing row.
-ROW_UNIT = {"sheet1": 864, "sheet2_top": 493, "sheet2_bottom": 358}
+ROW_UNIT = {"sheet1": 864, "sheet2_top": 493, "sheet2_bottom": 358, "sheet3": 466}
 
 INFO = {
     # name: (description, facing, row)
@@ -55,7 +55,30 @@ INFO = {
     "head_shout_2":      ("Shouting (alt)", "right", None),
     "head_grin_2":       ("Grin (alt)", "right", None),
     "head_sideeye":      ("Unimpressed side-eye", "right", None),
+    "head_calm":         ("Calm, slight confident smile (v2 set)", "right", None),
+    "head_glance":       ("Cool side glance (v2 set)", "right", None),
+    "head_chin_up":      ("Chin up, proud (v2 set)", "right", None),
+    "head_yell":         ("Yelling (v2 set)", "right", None),
+    "head_smile":        ("Big toothy smile (v2 set)", "right", None),
+    "head_defeated":     ("Frowning down, sullen / defeated", "right", None),
+    "head_surprised":    ("Surprised, eyes wide, mouth open", "right", None),
+    "head_laughing":     ("Laughing hard", "right", None),
+    "head_tired":        ("Tired, eyes down, drained", "right", None),
+    "head_pleading":     ("Pleading / sad, brows up, mouth open", "right", None),
+    "head_disgust":      ("Disgust / sneer, teeth clenched", "right", None),
+    "head_afraid":       ("Afraid, wide eyes", "right", None),
+    "head_smirk":        ("Smirk, one brow up", "right", None),
+    "head_angry":        ("Angry, controlled glare", "right", None),
+    "pose_fist_raise":   ("Fist raised in triumph", "right", "sheet3"),
+    "pose_hands_hips":   ("Hands on hips, confident", "right", "sheet3"),
+    "pose_sit_despair":  ("Sitting on a block, head in hands (block included)", "right", "sheet3"),
+    "pose_stretch":      ("Arms overhead, stretching", "right", "sheet3"),
+    "pose_run":          ("Running, mid-stride", "right", "sheet3"),
+    "pose_point_up":     ("Pointing up at the sky", "right", "sheet3"),
 }
+
+
+CENTER_ANCHOR = {"pose_run"}
 
 
 def anchors(alpha):
@@ -78,6 +101,8 @@ def main():
         a = anchors(alpha)
         kind = "pose" if name.startswith("pose") else "head"
         p = dict(kind=kind, w=w, h=h, desc=desc, facing=facing, **a)
+        if name in CENTER_ANCHOR:  # mid-air / one-foot poses: anchor on the body centre
+            p["footX"] = (a["bbox"][0] + a["bbox"][2]) / 2
         if kind == "pose":
             crop_h = BOXES[name]["box"][3] - BOXES[name]["box"][1]
             p["unit"] = round(ROW_UNIT[row] * h / crop_h, 1)

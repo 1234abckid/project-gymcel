@@ -5,8 +5,8 @@ Your character (stone-gray statue, red laurel, red toga) turned into **editable 
 ```
 statue-rig/
 ├── assets/
-│   ├── source/                  your two reference sheets (pipeline input)
-│   ├── parts/*.svg              27 editable SVGs: 14 full-body poses + 13 head/expression busts
+│   ├── source/                  your reference sheets (pipeline input)
+│   ├── parts/*.svg              47 editable SVGs: 20 full-body poses + 27 head/expression busts
 │   └── statue-library.svg       every part as a <symbol> in one file (open in Figma / Illustrator / Inkscape)
 ├── engine/
 │   ├── library.js               generated bundle of parts + anchors (what the engine loads)
@@ -15,6 +15,7 @@ statue-rig/
 │   ├── gallery.html             visual catalogue of every pose & expression with its name
 │   ├── fonts.css, fonts/        bundled fonts (Permanent Marker, Bebas Neue, Anton, Cinzel)
 ├── scenes/demo.json             example scene (the 17 s style test)
+├── scenes/showcase_v2.json      set-2 poses and expressions in motion
 └── tools/
     ├── render.js                scene JSON → MP4 or PNG still (Playwright + ffmpeg)
     ├── serve.js                 local server for player.html / gallery.html
@@ -120,6 +121,10 @@ Open `engine/gallery.html` for the visual list.
   - Calm / proud: `head_hero` · `head_confident` · `head_neutral_34` · `head_proud` · `head_side` · `head_smug_up`
   - Down / brooding: `head_brooding` · `head_brood_down` · `head_sideeye`
   - Loud / grinning: `head_shout` · `head_shout_2` · `head_grin` · `head_grin_2`
+  - **Set 2** — one consistent bust framing, so they swap seamlessly in close-ups. Prefer mixing within a set: set-2 busts include the shoulders, so their heads read smaller than set 1's.
+    - `head_calm` · `head_glance` · `head_chin_up` · `head_yell` · `head_smile`
+    - `head_defeated` · `head_surprised` · `head_laughing` · `head_tired` · `head_pleading`
+    - `head_disgust` · `head_afraid` · `head_smirk` · `head_angry`
 
 ## Regenerating / adding poses (Python pipeline)
 
@@ -141,7 +146,8 @@ python3 tools/build_library.py work/vec
 - `cutout.py` reads `character-sheet.png` / `character-reference.png` from the folder you pass (or `sheet1.png` / `sheet2.png`).
 - It downloads the BiRefNet-lite segmentation model on first run.
 - **Add a new pose:** put the new drawing on a sheet, add `"pose_name": {"sheet": "...", "box": [x0,y0,x1,y1]}` to `tools/boxes.json`, add a description, facing and row to `INFO` in `build_library.py`, then re-run the three commands. Leftover background bits can be removed with `"clean": true`, `"exclude"` rects (sheet coords) or `"exclude_poly"` polygons (crop coords).
-- **Best results for new art:** draw new poses on a flat, plain background in a colour that isn't red or black. The cut-out is then trivial and more accurate.
+- **Transparent sheets (e.g. ChatGPT PNGs):** use `"method": "alpha"` in `boxes.json`. The figure is taken straight from the alpha channel, with no segmentation model or clean-up needed. Add the file to `SHEET_FILES` in `cutout.py`. Poses on a new sheet also need their standing body height (source px) in `ROW_UNIT` in `build_library.py`.
+- **Poses that don't stand on both feet** (running, jumping): add the name to `CENTER_ANCHOR` in `build_library.py` so swaps anchor on the body centre.
 
 ## Known limitations
 - **Flat colours.** The stone grain of the original paintings is simplified to 8 flat colours. A film-grain overlay (`background.grain`) brings back some texture.

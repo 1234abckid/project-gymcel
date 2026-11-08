@@ -60,6 +60,18 @@ def cut(sheet, box, holes, scale):
     return rgba
 
 
+def cut_alpha(sheet_rgba, box, holes, scale):
+    """For sheets that already have a transparent background (e.g. ChatGPT PNGs).
+    Pick the figure with a strict alpha threshold (so faint fringes don't glue
+    neighbours together), then keep its softer edge pixels."""
+    x0, y0, x1, y1 = box
+    a = sheet_rgba[y0:y1, x0:x1]
+    core = largest(ndi.binary_opening(a[..., 3] > 200, iterations=1))
+    m = (a[..., 3] > 128) & ndi.binary_dilation(core, iterations=3)
+    m = ndi.binary_fill_holes(m)
+    return np.dstack([a[..., :3].astype(np.uint8), (m * 255).astype(np.uint8)])
+
+
 def largest(m):
     cl, k = ndi.label(m)
     if k > 1:
@@ -127,6 +139,7 @@ def name_is_bust(box, sheet):
     return CURRENT.get("kind") == "head"
 
 
+SHEET_FILES = {"sheet1": "character-sheet.png", "sheet2": "character-reference.png", "sheet3": "character-expressions-2.png"}
 CURRENT = {}
 EXCLUDE = []
 EXCLUDE_POLY = []
@@ -179,14 +192,15 @@ def main():
         if s not in sheets:
             fn = os.path.join(sheets_dir, s + ".png")
             if not os.path.exists(fn):  # committed names in assets/source
-                fn = os.path.join(sheets_dir, {"sheet1": "character-sheet.png", "sheet2": "character-reference.png"}[s])
-            sheets[s] = np.asarray(Image.open(fn).convert("RGB"))
+                fn = os.path.join(sheets_dir, SHEET_FILES[s])
+            sheets[s] = np.asarray(Image.open(fn).convert("RGBA" if spec.get("method") == "alpha" else "RGB"))
         scale = 1.6 if s == "sheet1" else 1.0  # sheet1 is drawn ~1.6x larger
         CURRENT.clear(); CURRENT["kind"] = "head" if name.startswith("head") else "pose"
         CURRENT["clean"] = spec.get("clean", False)
         EXCLUDE[:] = spec.get("exclude", [])
         EXCLUDE_POLY[:] = spec.get("exclude_poly", [])
-        rgba = (cut_ml if spec.get("method", "ml") == "ml" else cut)(sheets[s], spec["box"], spec.get("holes", []), scale)
+        method = {"ml": cut_ml, "alpha": cut_alpha, "outline": cut}[spec.get("method", "ml")]
+        rgba = method(sheets[s], spec["box"], spec.get("holes", []), scale)
         Image.fromarray(rgba).save(os.path.join(out_dir, name + ".png"))
         print(name, rgba.shape[1], "x", rgba.shape[0], "coverage %.2f" % (rgba[..., 3].mean() / 255))
 

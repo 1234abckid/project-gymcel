@@ -1,5 +1,5 @@
 {
- "_doc": "Crop boxes [x0,y0,x1,y1] in source-sheet pixels. 'holes' = extra background seed points (sheet coords) for enclosed gaps (e.g. between arm and torso). 'clean' = remove background patches outside the outline (opt-in). 'exclude' = rects [x0,y0,x1,y1] in sheet coords forced to background. 'exclude_poly' = polygons in crop coords forced to background.",
+ "_doc": "Crop boxes [x0,y0,x1,y1] in source-sheet pixels. 'holes' = extra background seed points (sheet coords) for enclosed gaps (e.g. between arm and torso). 'clean' = remove background patches outside the outline (opt-in). 'exclude' = rects [x0,y0,x1,y1] in sheet coords forced to background. 'exclude_poly' = polygons in crop coords forced to background. 'method': 'ml' (default, segmentation model), 'alpha' (sheet already transparent), 'outline' (legacy outline flood).",
  "pose_front_proud": {
   "sheet": "sheet1",
   "box": [
@@ -428,5 +428,225 @@
   ],
   "holes": [],
   "clean": true
+ },
+ "head_calm": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   25,
+   0,
+   304,
+   210
+  ],
+  "holes": []
+ },
+ "head_glance": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   316,
+   3,
+   540,
+   210
+  ],
+  "holes": []
+ },
+ "head_chin_up": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   556,
+   0,
+   798,
+   211
+  ],
+  "holes": []
+ },
+ "head_yell": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   808,
+   2,
+   1023,
+   212
+  ],
+  "holes": []
+ },
+ "head_smile": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   1069,
+   5,
+   1288,
+   214
+  ],
+  "holes": []
+ },
+ "head_defeated": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   35,
+   216,
+   260,
+   423
+  ],
+  "holes": []
+ },
+ "head_surprised": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   297,
+   212,
+   547,
+   423
+  ],
+  "holes": []
+ },
+ "head_laughing": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   565,
+   211,
+   808,
+   424
+  ],
+  "holes": []
+ },
+ "head_tired": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   813,
+   215,
+   1049,
+   425
+  ],
+  "holes": []
+ },
+ "head_pleading": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   1060,
+   218,
+   1293,
+   426
+  ],
+  "holes": []
+ },
+ "head_disgust": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   63,
+   423,
+   306,
+   636
+  ],
+  "holes": []
+ },
+ "head_afraid": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   336,
+   424,
+   582,
+   634
+  ],
+  "holes": []
+ },
+ "head_smirk": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   598,
+   426,
+   852,
+   634
+  ],
+  "holes": []
+ },
+ "head_angry": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   872,
+   425,
+   1091,
+   630
+  ],
+  "holes": []
+ },
+ "pose_fist_raise": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   7,
+   638,
+   257,
+   1158
+  ],
+  "holes": []
+ },
+ "pose_hands_hips": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   238,
+   684,
+   447,
+   1157
+  ],
+  "holes": []
+ },
+ "pose_sit_despair": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   458,
+   805,
+   709,
+   1159
+  ],
+  "holes": []
+ },
+ "pose_stretch": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   690,
+   638,
+   853,
+   1138
+  ],
+  "holes": []
+ },
+ "pose_run": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   856,
+   722,
+   1098,
+   1171
+  ],
+  "holes": []
+ },
+ "pose_point_up": {
+  "sheet": "sheet3",
+  "method": "alpha",
+  "box": [
+   1078,
+   607,
+   1307,
+   1163
+  ],
+  "holes": []
  }
 }
