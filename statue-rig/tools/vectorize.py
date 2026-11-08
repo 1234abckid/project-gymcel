@@ -60,15 +60,78 @@ class Pal:
         self.order = {r: (999 if r == "ink" else -lum[i]) for i, r in enumerate(self.roles)}
 
 
-CHAR_PAL = Pal(PALETTE)
-PROP_PAL = Pal(ALL_ROLES)
+
+DROP = set(filter(None, os.environ.get("VEC_DROP", "stone-mid").split(",")))
+CHAR_PAL = Pal({k: v for k, v in PALETTE.items() if k not in DROP})
+PROP_PAL = Pal({k: v for k, v in ALL_ROLES.items() if k not in DROP})
 # back-compat names
 ROLES, PAL_RGB, PAL_LAB = CHAR_PAL.roles, CHAR_PAL.rgb, CHAR_PAL.lab
 
 
+MIN_AREA = float(os.environ.get("VEC_MIN_AREA", "0.0015"))  # fraction of the figure area
+MIN_INK = int(os.environ.get("VEC_MIN_INK", "60"))           # px; keep eyes/lines, drop crumbs
+PROTECT = {"stone-hi", "paper", "metal-hi", "toga-hi"}          # small bright features: eye whites, teeth, glints
+
+
+def merge_specks(lbl, a, roles):
+    """Remove texture blotches: every colour patch smaller than MIN_AREA of the figure
+    (ink: smaller than MIN_INK px) is absorbed into the nearest surviving colour.
+    This is what keeps the painted stone/grunge texture from turning into camo."""
+    from scipy import ndimage as ndi
+    area = max(1, a.sum())
+    keep = np.zeros_like(a)
+    ink = roles.index("ink")
+    for i in range(len(roles)):
+        m = (lbl == i) & a
+        if not m.any():
+            continue
+        lab, k = ndi.label(m)
+        sizes = ndi.sum(m, lab, range(1, k + 1))
+        thr = MIN_INK if (i == ink or roles[i] in PROTECT) else MIN_AREA * area
+        big = np.zeros(k + 1, bool)
+        big[1:] = sizes >= thr
+        keep |= big[lab]
+    unknown = a & ~keep
+    if unknown.any() and keep.any():
+        _, (iy, ix) = ndi.distance_transform_edt(~keep, return_indices=True)
+        lbl = lbl.copy()
+        lbl[unknown] = lbl[iy[unknown], ix[unknown]]
+    return lbl
+
+
+def adaptive_pal(im, name, k=6):
+    """Per-prop palette: k-means on the prop's own (flattened) colours.  Roles are named
+    <prop>-c0.. so each prop is recolourable on its own; near-black clusters become .ink."""
+    a = im[..., 3] > 128
+    rgb = flatten(np.ascontiguousarray(im[..., :3]), 1.0)
+    px = rgb[a].reshape(-1, 1, 3)
+    lab = cv2.cvtColor(px, cv2.COLOR_RGB2LAB).reshape(-1, 3).astype(np.float32)
+    _, lb, cen = cv2.kmeans(lab, k, None, (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 50, 0.5), 3, cv2.KMEANS_PP_CENTERS)
+    cols = cv2.cvtColor(cen.reshape(-1, 1, 3).astype(np.uint8), cv2.COLOR_LAB2RGB).reshape(-1, 3)
+    order = np.argsort(-cols.astype(float) @ [0.299, 0.587, 0.114])
+    roles, base = {}, name.replace("prop_", "")
+    for j, i in enumerate(order):
+        c = cols[i]
+        if c.max() < 40 and "ink" not in roles:
+            roles["ink"] = PALETTE["ink"]
+        else:
+            roles[f"{base}-c{j}"] = "#%02X%02X%02X" % tuple(int(v) for v in c)
+    roles.setdefault("ink", PALETTE["ink"])
+    return Pal(roles)
+
+
+def flatten(rgb, scale):
+    """Flatten painted texture/grain into clean colour areas while keeping edges
+    (mean-shift + bilateral).  This is what stops the stone grunge reading as camo."""
+    rgb = np.ascontiguousarray(rgb)
+    sp = int(max(4, float(os.environ.get("VEC_FLAT_SP", "2.2")) * scale))
+    rgb = cv2.pyrMeanShiftFiltering(rgb, sp, float(os.environ.get("VEC_FLAT_SR", "16")), maxLevel=1)
+    return cv2.bilateralFilter(rgb, 9, 30, 5)
+
+
 def quantize(rgb, alpha, scale, pal=CHAR_PAL):
     ROLES, PAL_RGB, PAL_LAB = pal.roles, pal.rgb, pal.lab
-    rgb = cv2.bilateralFilter(np.ascontiguousarray(rgb), 9, 35, 5)
+    rgb = flatten(rgb, scale)
     lab = cv2.cvtColor(rgb, cv2.COLOR_RGB2LAB).astype(np.float32)
     d = ((lab[:, :, None, :] - PAL_LAB[None, None]) ** 2).sum(-1)
     # bias: keep the (thin) outline and laurel highlight from being swallowed
@@ -80,6 +143,7 @@ def quantize(rgb, alpha, scale, pal=CHAR_PAL):
     votes[..., ROLES.index("ink")] *= 1.15
     lbl = votes.argmax(-1)
     a = cv2.GaussianBlur(alpha.astype(np.float32), (0, 0), sigma) > 127
+    lbl = merge_specks(lbl, a, ROLES)
     out = PAL_RGB[lbl]
     out[~a] = KEY
     return out, a
@@ -129,7 +193,7 @@ def main():
     for name in names:
         im = np.asarray(Image.open(os.path.join(cut_dir, name + ".png")).convert("RGBA"))
         is_prop = name.startswith("prop")
-        pal = PROP_PAL if is_prop else CHAR_PAL
+        pal = adaptive_pal(im, name) if is_prop else CHAR_PAL
         if is_prop:  # props: longest side 900 px
             scale = 900 / max(im.shape[:2])
         else:

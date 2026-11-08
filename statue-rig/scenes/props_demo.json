@@ -1,35 +1,263 @@
 {
-  "title": "Props demo — whiteboard lesson",
-  "width": 1920, "height": 1080, "fps": 30, "duration": 13,
-  "background": { "color": "#ECE4D6", "grain": 0.45, "vignette": 0.3 },
-  "events": [
-    { "t": 0.0, "type": "prop", "id": "wb", "kind": "part", "name": "prop_whiteboard", "at": [0.63, 0.5], "size": 0.78, "enter": "pop", "layer": "back",
-      "text": "Sleep 8 hours. Lift 4x a week. No phone in bed.", "font": "marker", "every": 0.28, "textDelay": 0.9 },
-    { "t": 0.2, "type": "pose", "name": "pose_gesture_open", "x": 0.2, "height": 0.8, "enter": "slide-left" },
-    { "t": 3.4, "type": "pose", "name": "pose_pointing" },
-    { "t": 3.4, "type": "prop", "id": "c1", "kind": "circle", "at": [0.63, 0.45], "rx": 0.15, "ry": 0.09 },
-    { "t": 5.0, "type": "prop", "id": "wb", "off": true, "exit": "pop" },
-    { "t": 5.0, "type": "prop", "id": "c1", "off": true },
-    { "t": 5.0, "type": "pose", "name": "pose_hands_hips", "x": 0.5, "height": 0.8, "enter": "pop" },
-    { "t": 5.3, "type": "prop", "id": "d1", "kind": "part", "name": "prop_dumbbell", "at": [0.2, 0.32], "size": 0.16, "rotate": -12, "float": true },
-    { "t": 5.6, "type": "prop", "id": "d2", "kind": "part", "name": "prop_shaker", "at": [0.8, 0.3], "size": 0.22, "float": true },
-    { "t": 5.9, "type": "prop", "id": "d3", "kind": "part", "name": "prop_kettlebell", "at": [0.2, 0.72], "size": 0.18 },
-    { "t": 6.2, "type": "prop", "id": "d4", "kind": "part", "name": "prop_stopwatch", "at": [0.8, 0.72], "size": 0.18, "rotate": 10 },
-    { "t": 7.4, "type": "prop", "id": "d1", "off": true, "exit": "pop" },
-    { "t": 7.4, "type": "prop", "id": "d2", "off": true, "exit": "pop" },
-    { "t": 7.4, "type": "prop", "id": "d3", "off": true, "exit": "pop" },
-    { "t": 7.4, "type": "prop", "id": "d4", "off": true, "exit": "pop" },
-    { "t": 7.6, "type": "pose", "name": "pose_thinking", "x": 0.3 },
-    { "t": 7.8, "type": "prop", "id": "ph", "kind": "part", "name": "prop_phone", "at": [0.6, 0.42], "size": 0.28, "rotate": -8 },
-    { "t": 8.0, "type": "prop", "id": "cf", "kind": "part", "name": "prop_coffee", "at": [0.8, 0.45], "size": 0.3 },
-    { "t": 8.6, "type": "prop", "id": "x1", "kind": "x", "at": [0.6, 0.42], "size": 0.1 },
-    { "t": 9.0, "type": "prop", "id": "x2", "kind": "x", "at": [0.8, 0.45], "size": 0.1 },
-    { "t": 10.0, "type": "prop", "id": "ph", "off": true },
-    { "t": 10.0, "type": "prop", "id": "cf", "off": true },
-    { "t": 10.0, "type": "prop", "id": "x1", "off": true },
-    { "t": 10.0, "type": "prop", "id": "x2", "off": true },
-    { "t": 10.0, "type": "bg", "color": "#2A0A0D" },
-    { "t": 10.0, "type": "prop", "id": "cb", "kind": "part", "name": "prop_chalkboard", "at": [0.62, 0.42], "width": 0.55, "enter": "drop", "text": "DISCIPLINE > MOTIVATION", "font": "caps", "every": 0.3, "textDelay": 0.6 },
-    { "t": 10.0, "type": "pose", "name": "pose_arms_crossed", "x": 0.2 }
-  ]
+ "title": "Props demo \u2014 whiteboard lesson",
+ "width": 1920,
+ "height": 1080,
+ "fps": 30,
+ "duration": 13,
+ "background": {
+  "color": "#ECE4D6",
+  "grain": 0,
+  "vignette": 0.3
+ },
+ "events": [
+  {
+   "t": 0.0,
+   "type": "prop",
+   "id": "wb",
+   "kind": "part",
+   "name": "prop_whiteboard",
+   "at": [
+    0.63,
+    0.5
+   ],
+   "size": 0.78,
+   "enter": "pop",
+   "layer": "back",
+   "text": "Sleep 8 hours. Lift 4x a week. No phone in bed.",
+   "font": "marker",
+   "every": 0.28,
+   "textDelay": 0.9
+  },
+  {
+   "t": 0.2,
+   "type": "pose",
+   "name": "pose_gesture_open",
+   "x": 0.2,
+   "height": 0.8,
+   "enter": "slide-left"
+  },
+  {
+   "t": 3.4,
+   "type": "pose",
+   "name": "pose_pointing"
+  },
+  {
+   "t": 3.4,
+   "type": "prop",
+   "id": "c1",
+   "kind": "circle",
+   "at": [
+    0.63,
+    0.45
+   ],
+   "rx": 0.15,
+   "ry": 0.09
+  },
+  {
+   "t": 5.0,
+   "type": "prop",
+   "id": "wb",
+   "off": true,
+   "exit": "pop"
+  },
+  {
+   "t": 5.0,
+   "type": "prop",
+   "id": "c1",
+   "off": true
+  },
+  {
+   "t": 5.0,
+   "type": "pose",
+   "name": "pose_hands_hips",
+   "x": 0.5,
+   "height": 0.8,
+   "enter": "pop"
+  },
+  {
+   "t": 5.3,
+   "type": "prop",
+   "id": "d1",
+   "kind": "part",
+   "name": "prop_dumbbell",
+   "at": [
+    0.2,
+    0.32
+   ],
+   "size": 0.16,
+   "rotate": -12,
+   "float": true
+  },
+  {
+   "t": 5.6,
+   "type": "prop",
+   "id": "d2",
+   "kind": "part",
+   "name": "prop_shaker",
+   "at": [
+    0.8,
+    0.3
+   ],
+   "size": 0.22,
+   "float": true
+  },
+  {
+   "t": 5.9,
+   "type": "prop",
+   "id": "d3",
+   "kind": "part",
+   "name": "prop_kettlebell",
+   "at": [
+    0.2,
+    0.72
+   ],
+   "size": 0.18
+  },
+  {
+   "t": 6.2,
+   "type": "prop",
+   "id": "d4",
+   "kind": "part",
+   "name": "prop_stopwatch",
+   "at": [
+    0.8,
+    0.72
+   ],
+   "size": 0.18,
+   "rotate": 10
+  },
+  {
+   "t": 7.4,
+   "type": "prop",
+   "id": "d1",
+   "off": true,
+   "exit": "pop"
+  },
+  {
+   "t": 7.4,
+   "type": "prop",
+   "id": "d2",
+   "off": true,
+   "exit": "pop"
+  },
+  {
+   "t": 7.4,
+   "type": "prop",
+   "id": "d3",
+   "off": true,
+   "exit": "pop"
+  },
+  {
+   "t": 7.4,
+   "type": "prop",
+   "id": "d4",
+   "off": true,
+   "exit": "pop"
+  },
+  {
+   "t": 7.6,
+   "type": "pose",
+   "name": "pose_thinking",
+   "x": 0.3
+  },
+  {
+   "t": 7.8,
+   "type": "prop",
+   "id": "ph",
+   "kind": "part",
+   "name": "prop_phone",
+   "at": [
+    0.6,
+    0.42
+   ],
+   "size": 0.28,
+   "rotate": -8
+  },
+  {
+   "t": 8.0,
+   "type": "prop",
+   "id": "cf",
+   "kind": "part",
+   "name": "prop_coffee",
+   "at": [
+    0.8,
+    0.45
+   ],
+   "size": 0.3
+  },
+  {
+   "t": 8.6,
+   "type": "prop",
+   "id": "x1",
+   "kind": "x",
+   "at": [
+    0.6,
+    0.42
+   ],
+   "size": 0.1
+  },
+  {
+   "t": 9.0,
+   "type": "prop",
+   "id": "x2",
+   "kind": "x",
+   "at": [
+    0.8,
+    0.45
+   ],
+   "size": 0.1
+  },
+  {
+   "t": 10.0,
+   "type": "prop",
+   "id": "ph",
+   "off": true
+  },
+  {
+   "t": 10.0,
+   "type": "prop",
+   "id": "cf",
+   "off": true
+  },
+  {
+   "t": 10.0,
+   "type": "prop",
+   "id": "x1",
+   "off": true
+  },
+  {
+   "t": 10.0,
+   "type": "prop",
+   "id": "x2",
+   "off": true
+  },
+  {
+   "t": 10.0,
+   "type": "bg",
+   "color": "#2A0A0D"
+  },
+  {
+   "t": 10.0,
+   "type": "prop",
+   "id": "cb",
+   "kind": "part",
+   "name": "prop_chalkboard",
+   "at": [
+    0.62,
+    0.42
+   ],
+   "width": 0.55,
+   "enter": "drop",
+   "text": "DISCIPLINE > MOTIVATION",
+   "font": "caps",
+   "every": 0.3,
+   "textDelay": 0.6
+  },
+  {
+   "t": 10.0,
+   "type": "pose",
+   "name": "pose_arms_crossed",
+   "x": 0.2
+  }
+ ]
 }

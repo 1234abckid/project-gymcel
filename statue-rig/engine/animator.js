@@ -108,7 +108,7 @@
     _buildFx(bg) {
       const { W, H } = this;
       // film grain: a seeded noise tile rasterised once (cheap per frame)
-      const grain = bg.grain === undefined ? 0.35 : bg.grain;
+      const grain = bg.grain === undefined ? 0 : bg.grain; // off by default: grain + video compression reads as dirt
       if (grain > 0) {
         const c = document.createElement('canvas'); c.width = c.height = 256;
         const g = c.getContext('2d'), id = g.createImageData(256, 256);

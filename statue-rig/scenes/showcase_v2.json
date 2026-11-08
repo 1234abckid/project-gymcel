@@ -1,35 +1,191 @@
 {
-  "title": "Showcase — v2 poses & expressions",
-  "width": 1920, "height": 1080, "fps": 30, "duration": 14,
-  "background": { "color": "#ECE4D6", "grain": 0.45, "vignette": 0.3 },
-  "talk": [[8.2, 13.6]],
-  "events": [
-    { "t": 0.0, "type": "pose", "name": "pose_hands_hips", "x": 0.3, "height": 0.8, "enter": "pop" },
-    { "t": 0.3, "type": "text", "id": "a", "text": "New poses", "font": "marker", "size": 110, "x": 0.68, "y": 0.4, "every": 0.25 },
-    { "t": 1.4, "type": "pose", "name": "pose_fist_raise" },
-    { "t": 1.4, "type": "nudge", "kind": "hop", "dur": 0.4 },
-    { "t": 2.6, "type": "pose", "name": "pose_point_up" },
-    { "t": 2.6, "type": "prop", "id": "arr", "kind": "arrow", "from": [0.5, 0.25], "to": [0.4, 0.12], "color": "#B3121C" },
-    { "t": 3.8, "type": "prop", "id": "arr", "off": true },
-    { "t": 3.8, "type": "pose", "name": "pose_stretch" },
-    { "t": 5.0, "type": "pose", "name": "pose_run", "x": 0.5, "enter": "slide-left" },
-    { "t": 5.0, "type": "text", "id": "a", "off": true },
-    { "t": 6.3, "type": "bg", "color": "#2A0A0D" },
-    { "t": 6.3, "type": "pose", "name": "pose_sit_despair", "x": 0.5, "enter": "drop" },
-    { "t": 6.8, "type": "text", "id": "b", "text": "and new emotions.", "font": "marker", "size": 90, "x": 0.5, "y": 0.12, "color": "#ECE4D6", "every": 0.2 },
-    { "t": 8.0, "type": "text", "id": "b", "off": true },
-    { "t": 8.0, "type": "bg", "color": "#ECE4D6" },
-    { "t": 8.0, "type": "closeup", "name": "head_calm" },
-    { "t": 8.5, "type": "closeup", "name": "head_surprised" },
-    { "t": 9.0, "type": "closeup", "name": "head_afraid" },
-    { "t": 9.5, "type": "closeup", "name": "head_pleading" },
-    { "t": 10.0, "type": "closeup", "name": "head_defeated" },
-    { "t": 10.5, "type": "closeup", "name": "head_tired" },
-    { "t": 11.0, "type": "closeup", "name": "head_disgust" },
-    { "t": 11.5, "type": "closeup", "name": "head_angry" },
-    { "t": 12.0, "type": "closeup", "name": "head_yell", "shake": true },
-    { "t": 12.0, "type": "shake", "dur": 0.4, "amp": 16 },
-    { "t": 12.6, "type": "closeup", "name": "head_laughing" },
-    { "t": 13.2, "type": "closeup", "name": "head_smirk" }
+ "title": "Showcase \u2014 v2 poses & expressions",
+ "width": 1920,
+ "height": 1080,
+ "fps": 30,
+ "duration": 14,
+ "background": {
+  "color": "#ECE4D6",
+  "grain": 0,
+  "vignette": 0.3
+ },
+ "talk": [
+  [
+   8.2,
+   13.6
   ]
+ ],
+ "events": [
+  {
+   "t": 0.0,
+   "type": "pose",
+   "name": "pose_hands_hips",
+   "x": 0.3,
+   "height": 0.8,
+   "enter": "pop"
+  },
+  {
+   "t": 0.3,
+   "type": "text",
+   "id": "a",
+   "text": "New poses",
+   "font": "marker",
+   "size": 110,
+   "x": 0.68,
+   "y": 0.4,
+   "every": 0.25
+  },
+  {
+   "t": 1.4,
+   "type": "pose",
+   "name": "pose_fist_raise"
+  },
+  {
+   "t": 1.4,
+   "type": "nudge",
+   "kind": "hop",
+   "dur": 0.4
+  },
+  {
+   "t": 2.6,
+   "type": "pose",
+   "name": "pose_point_up"
+  },
+  {
+   "t": 2.6,
+   "type": "prop",
+   "id": "arr",
+   "kind": "arrow",
+   "from": [
+    0.5,
+    0.25
+   ],
+   "to": [
+    0.4,
+    0.12
+   ],
+   "color": "#B3121C"
+  },
+  {
+   "t": 3.8,
+   "type": "prop",
+   "id": "arr",
+   "off": true
+  },
+  {
+   "t": 3.8,
+   "type": "pose",
+   "name": "pose_stretch"
+  },
+  {
+   "t": 5.0,
+   "type": "pose",
+   "name": "pose_run",
+   "x": 0.5,
+   "enter": "slide-left"
+  },
+  {
+   "t": 5.0,
+   "type": "text",
+   "id": "a",
+   "off": true
+  },
+  {
+   "t": 6.3,
+   "type": "bg",
+   "color": "#2A0A0D"
+  },
+  {
+   "t": 6.3,
+   "type": "pose",
+   "name": "pose_sit_despair",
+   "x": 0.5,
+   "enter": "drop"
+  },
+  {
+   "t": 6.8,
+   "type": "text",
+   "id": "b",
+   "text": "and new emotions.",
+   "font": "marker",
+   "size": 90,
+   "x": 0.5,
+   "y": 0.12,
+   "color": "#ECE4D6",
+   "every": 0.2
+  },
+  {
+   "t": 8.0,
+   "type": "text",
+   "id": "b",
+   "off": true
+  },
+  {
+   "t": 8.0,
+   "type": "bg",
+   "color": "#ECE4D6"
+  },
+  {
+   "t": 8.0,
+   "type": "closeup",
+   "name": "head_calm"
+  },
+  {
+   "t": 8.5,
+   "type": "closeup",
+   "name": "head_surprised"
+  },
+  {
+   "t": 9.0,
+   "type": "closeup",
+   "name": "head_afraid"
+  },
+  {
+   "t": 9.5,
+   "type": "closeup",
+   "name": "head_pleading"
+  },
+  {
+   "t": 10.0,
+   "type": "closeup",
+   "name": "head_defeated"
+  },
+  {
+   "t": 10.5,
+   "type": "closeup",
+   "name": "head_tired"
+  },
+  {
+   "t": 11.0,
+   "type": "closeup",
+   "name": "head_disgust"
+  },
+  {
+   "t": 11.5,
+   "type": "closeup",
+   "name": "head_angry"
+  },
+  {
+   "t": 12.0,
+   "type": "closeup",
+   "name": "head_yell",
+   "shake": true
+  },
+  {
+   "t": 12.0,
+   "type": "shake",
+   "dur": 0.4,
+   "amp": 16
+  },
+  {
+   "t": 12.6,
+   "type": "closeup",
+   "name": "head_laughing"
+  },
+  {
+   "t": 13.2,
+   "type": "closeup",
+   "name": "head_smirk"
+  }
+ ]
 }

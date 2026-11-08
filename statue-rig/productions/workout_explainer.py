@@ -40,7 +40,7 @@ P = {
     "title": "What working out actually does to you",
     "voice": {"voice": "am_michael", "speed": 1.06, "fx": "coach"},
     "music": {"file": "music_beat", "gain_db": -22, "duck_db": -8},
-    "scene": {"width": 1920, "height": 1080, "fps": 30, "background": {"color": CREAM, "grain": 0.45, "vignette": 0.3}},
+    "scene": {"width": 1920, "height": 1080, "fps": 30, "background": {"color": CREAM, "grain": 0, "vignette": 0.3}},
     "lead_in": 0.5, "tail": 2.0,
     "beats": [
         # ---- hook ----

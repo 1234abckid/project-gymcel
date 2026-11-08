@@ -18,7 +18,7 @@
 </head>
 <body>
 <header><h1>Statue rig — parts library</h1><p>Every pose and expression available to scenes. Names are what you put in <code>"name"</code>.</p></header>
-<h2>Palette (CSS classes — edit in <code>tools/vectorize.py</code> or override per scene with <code>"palette"</code>; the last 11 are prop-only)</h2>
+<h2>Palette (CSS classes — edit in <code>tools/vectorize.py</code> or override per scene with <code>"palette"</code>. Props each have their own <code>&lt;prop&gt;-cN</code> colours)</h2>
 <div class="pal" id="pal"></div>
 <h2>Poses</h2><div class="grid" id="poses"></div>
 <h2>Heads / expressions (close-ups)</h2><div class="grid" id="heads"></div>
@@ -29,7 +29,7 @@
   const defs = document.createElement('div'); defs.style.display = 'none';
   const css = Object.entries(S.palette).map(([r, c]) => `.${r}{fill:${c};stroke:${c}}`).join('') + 'symbol path{stroke-width:.8;stroke-linejoin:round}';
   defs.innerHTML = `<svg xmlns="${NS}"><style>${css}</style>${S.symbols}</svg>`; document.body.prepend(defs);
-  for (const [r, c] of Object.entries(S.palette)) document.getElementById('pal').insertAdjacentHTML('beforeend', `<span class="sw"><i style="background:${c}"></i><code>.${r}</code> ${c}</span>`);
+  for (const [r, c] of Object.entries(S.palette).filter(([r]) => !/-c\d+$/.test(r))) document.getElementById('pal').insertAdjacentHTML('beforeend', `<span class="sw"><i style="background:${c}"></i><code>.${r}</code> ${c}</span>`);
   for (const [n, p] of Object.entries(S.parts)) {
     const [x0, y0, x1, y1] = p.bbox, pad = 10;
     document.getElementById(p.kind === 'pose' ? 'poses' : p.kind === 'prop' ? 'props' : 'heads').insertAdjacentHTML('beforeend',

@@ -4,7 +4,7 @@
  "fps": 30,
  "background": {
   "color": "#ECE4D6",
-  "grain": 0.45,
+  "grain": 0,
   "vignette": 0.3
  },
  "title": "What working out actually does to you",
