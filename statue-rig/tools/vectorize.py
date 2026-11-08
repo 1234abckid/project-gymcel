@@ -27,7 +27,21 @@ PALETTE = {
     "toga-sh":  "#260A0C",  # toga fold shadow
     "toga-hi":  "#741219",  # laurel / lit folds
 }
-ROLES = list(PALETTE)
+# Extra roles used only by props (prop_*). Props also use the character roles above.
+PROP_EXTRA = {
+    "paper":      "#E2D8D3",  # whiteboard, pages, cup, labels
+    "paper-sh":   "#BFB1AA",
+    "gear":       "#2B292A",  # black rubber / plastic (weights, phone, bag)
+    "gear-dk":    "#161415",
+    "gear-hi":    "#4A4648",
+    "metal":      "#9A9799",  # chrome bars, clips
+    "metal-hi":   "#D0CFD0",
+    "tan":        "#C69E79",  # scroll, cup sleeve, wood
+    "tan-sh":     "#8E6A4C",
+    "leather":    "#684B3B",  # wallet, frames
+    "leather-sh": "#3A2620",
+}
+ALL_ROLES = {**PALETTE, **PROP_EXTRA}
 KEY = (0, 255, 0)  # transparent pixels are keyed to this and dropped afterwards
 
 
@@ -35,11 +49,25 @@ def hex2rgb(h):
     return tuple(int(h[i:i + 2], 16) for i in (1, 3, 5))
 
 
-PAL_RGB = np.array([hex2rgb(PALETTE[r]) for r in ROLES], np.uint8)
-PAL_LAB = cv2.cvtColor(PAL_RGB.reshape(-1, 1, 3), cv2.COLOR_RGB2LAB).reshape(-1, 3).astype(np.float32)
+class Pal:
+    def __init__(self, roles):
+        self.roles = list(roles)
+        self.hex = dict(roles)
+        self.rgb = np.array([hex2rgb(roles[r]) for r in self.roles], np.uint8)
+        self.lab = cv2.cvtColor(self.rgb.reshape(-1, 1, 3), cv2.COLOR_RGB2LAB).reshape(-1, 3).astype(np.float32)
+        lum = self.rgb.astype(float) @ [0.299, 0.587, 0.114]
+        # draw order: lighter fills first, ink last, so seams read as linework
+        self.order = {r: (999 if r == "ink" else -lum[i]) for i, r in enumerate(self.roles)}
 
 
-def quantize(rgb, alpha, scale):
+CHAR_PAL = Pal(PALETTE)
+PROP_PAL = Pal(ALL_ROLES)
+# back-compat names
+ROLES, PAL_RGB, PAL_LAB = CHAR_PAL.roles, CHAR_PAL.rgb, CHAR_PAL.lab
+
+
+def quantize(rgb, alpha, scale, pal=CHAR_PAL):
+    ROLES, PAL_RGB, PAL_LAB = pal.roles, pal.rgb, pal.lab
     rgb = cv2.bilateralFilter(np.ascontiguousarray(rgb), 9, 35, 5)
     lab = cv2.cvtColor(rgb, cv2.COLOR_RGB2LAB).astype(np.float32)
     d = ((lab[:, :, None, :] - PAL_LAB[None, None]) ** 2).sum(-1)
@@ -67,7 +95,8 @@ def trace(img):
         length_threshold=3.5, max_iterations=10, splice_threshold=45, path_precision=1)
 
 
-def classify(svg, w, h, name):
+def classify(svg, w, h, name, pal=CHAR_PAL):
+    ROLES, PAL_RGB, PALETTE = pal.roles, pal.rgb, pal.hex
     rev = {PALETTE[r].lower(): r for r in ROLES}
     key_hex = "#%02x%02x%02x" % KEY
     paths = []
@@ -83,10 +112,9 @@ def classify(svg, w, h, name):
             role = ROLES[int(((PAL_RGB.astype(int) - c) ** 2).sum(1).argmin())]
         t = f' transform="translate({tx},{ty})"' if tx else ""
         paths.append((role, f'<path class="{role}" d="{d}"{t}/>'))
-    # draw order: lighter fills first, ink last, so seams read as linework
-    order = {r: i for i, r in enumerate(["stone-hi", "stone", "stone-mid", "stone-sh", "toga-hi", "toga", "toga-sh", "ink"])}
-    paths.sort(key=lambda p: order[p[0]])
-    style = "\n".join(f"  .{r}{{fill:{PALETTE[r]};stroke:{PALETTE[r]}}}" for r in ROLES)
+    paths.sort(key=lambda p: pal.order[p[0]])
+    used = sorted({r for r, _ in paths}, key=lambda r: pal.order[r])
+    style = "\n".join(f"  .{r}{{fill:{PALETTE[r]};stroke:{PALETTE[r]}}}" for r in used)
     body = "\n".join(p for _, p in paths)
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}" data-part="{name}">\n'
             f'<style>\n{style}\n  path{{stroke-width:0.8;stroke-linejoin:round}}\n</style>\n'
@@ -100,13 +128,17 @@ def main():
     meta = {}
     for name in names:
         im = np.asarray(Image.open(os.path.join(cut_dir, name + ".png")).convert("RGBA"))
-        target = 1400 if name.startswith("pose") else 720
-        scale = target / im.shape[0]
-        W, H = int(round(im.shape[1] * scale)), target
+        is_prop = name.startswith("prop")
+        pal = PROP_PAL if is_prop else CHAR_PAL
+        if is_prop:  # props: longest side 900 px
+            scale = 900 / max(im.shape[:2])
+        else:
+            scale = (1400 if name.startswith("pose") else 720) / im.shape[0]
+        W, H = int(round(im.shape[1] * scale)), int(round(im.shape[0] * scale))
         rgb = cv2.resize(np.ascontiguousarray(im[..., :3]), (W, H), interpolation=cv2.INTER_CUBIC)
         al = cv2.resize(np.ascontiguousarray(im[..., 3]), (W, H), interpolation=cv2.INTER_LINEAR)
-        q, a = quantize(rgb, al, scale)
-        svg, n = classify(trace(q), W, H, name)
+        q, a = quantize(rgb, al, scale, pal)
+        svg, n = classify(trace(q), W, H, name, pal)
         open(os.path.join(out_dir, name + ".svg"), "w").write(svg)
         Image.fromarray(np.dstack([np.where(a[..., None], q, 0), (a * 255).astype(np.uint8)]).astype(np.uint8)).save(
             os.path.join(out_dir, name + ".quant.png"))

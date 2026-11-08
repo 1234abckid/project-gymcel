@@ -139,7 +139,7 @@ def name_is_bust(box, sheet):
     return CURRENT.get("kind") == "head"
 
 
-SHEET_FILES = {"sheet1": "character-sheet.png", "sheet2": "character-reference.png", "sheet3": "character-expressions-2.png"}
+SHEET_FILES = {"sheet1": "character-sheet.png", "sheet2": "character-reference.png", "sheet3": "character-expressions-2.png", "sheet4": "props.png"}
 CURRENT = {}
 EXCLUDE = []
 EXCLUDE_POLY = []
@@ -195,7 +195,7 @@ def main():
                 fn = os.path.join(sheets_dir, SHEET_FILES[s])
             sheets[s] = np.asarray(Image.open(fn).convert("RGBA" if spec.get("method") == "alpha" else "RGB"))
         scale = 1.6 if s == "sheet1" else 1.0  # sheet1 is drawn ~1.6x larger
-        CURRENT.clear(); CURRENT["kind"] = "head" if name.startswith("head") else "pose"
+        CURRENT.clear(); CURRENT["kind"] = "head" if name.startswith("head") else ("prop" if name.startswith("prop") else "pose")
         CURRENT["clean"] = spec.get("clean", False)
         EXCLUDE[:] = spec.get("exclude", [])
         EXCLUDE_POLY[:] = spec.get("exclude_poly", [])

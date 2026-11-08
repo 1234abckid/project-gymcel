@@ -648,5 +648,280 @@
    1163
   ],
   "holes": []
+ },
+ "prop_whiteboard": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   2,
+   11,
+   390,
+   309
+  ],
+  "holes": []
+ },
+ "prop_flipchart": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   408,
+   0,
+   619,
+   299
+  ],
+  "holes": []
+ },
+ "prop_pointer": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   647,
+   21,
+   943,
+   283
+  ],
+  "holes": []
+ },
+ "prop_marker": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   970,
+   80,
+   1180,
+   259
+  ],
+  "holes": []
+ },
+ "prop_clipboard": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   1269,
+   1,
+   1488,
+   276
+  ],
+  "holes": []
+ },
+ "prop_book_open": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   14,
+   288,
+   360,
+   463
+  ],
+  "holes": []
+ },
+ "prop_book": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   373,
+   295,
+   616,
+   487
+  ],
+  "holes": []
+ },
+ "prop_scroll": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   631,
+   305,
+   887,
+   455
+  ],
+  "holes": []
+ },
+ "prop_chalkboard": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   892,
+   289,
+   1222,
+   457
+  ],
+  "holes": []
+ },
+ "prop_dumbbell": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   1241,
+   280,
+   1530,
+   455
+  ],
+  "holes": []
+ },
+ "prop_barbell": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   2,
+   468,
+   510,
+   641
+  ],
+  "holes": []
+ },
+ "prop_plate": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   527,
+   458,
+   744,
+   658
+  ],
+  "holes": []
+ },
+ "prop_kettlebell": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   818,
+   457,
+   968,
+   652
+  ],
+  "holes": []
+ },
+ "prop_shaker": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   1088,
+   452,
+   1196,
+   650
+  ],
+  "holes": []
+ },
+ "prop_bottle": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   1366,
+   434,
+   1458,
+   654
+  ],
+  "holes": []
+ },
+ "prop_towel": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   20,
+   643,
+   327,
+   818
+  ],
+  "holes": []
+ },
+ "prop_band": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   355,
+   654,
+   618,
+   792
+  ],
+  "holes": []
+ },
+ "prop_jump_rope": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   644,
+   652,
+   961,
+   811
+  ],
+  "holes": []
+ },
+ "prop_stopwatch": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   1028,
+   644,
+   1185,
+   823
+  ],
+  "holes": []
+ },
+ "prop_phone": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   1290,
+   647,
+   1500,
+   839
+  ],
+  "holes": []
+ },
+ "prop_headphones": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   17,
+   810,
+   242,
+   1017
+  ],
+  "holes": []
+ },
+ "prop_sunglasses": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   313,
+   863,
+   652,
+   1006
+  ],
+  "holes": []
+ },
+ "prop_coffee": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   702,
+   811,
+   845,
+   1023
+  ],
+  "holes": []
+ },
+ "prop_backpack": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   929,
+   810,
+   1155,
+   1024
+  ],
+  "holes": []
+ },
+ "prop_wallet": {
+  "sheet": "sheet4",
+  "method": "alpha",
+  "box": [
+   1264,
+   845,
+   1481,
+   1024
+  ],
+  "holes": []
  }
 }

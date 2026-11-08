@@ -6,7 +6,7 @@ Your character (stone-gray statue, red laurel, red toga) turned into **editable 
 statue-rig/
 ├── assets/
 │   ├── source/                  your reference sheets (pipeline input)
-│   ├── parts/*.svg              47 editable SVGs: 20 full-body poses + 27 head/expression busts
+│   ├── parts/*.svg              72 editable SVGs: 20 full-body poses, 27 head/expression busts, 25 props
 │   └── statue-library.svg       every part as a <symbol> in one file (open in Figma / Illustrator / Inkscape)
 ├── engine/
 │   ├── library.js               generated bundle of parts + anchors (what the engine loads)
@@ -16,6 +16,7 @@ statue-rig/
 │   ├── fonts.css, fonts/        bundled fonts (Permanent Marker, Bebas Neue, Anton, Cinzel)
 ├── scenes/demo.json             example scene (the 17 s style test)
 ├── scenes/showcase_v2.json      set-2 poses and expressions in motion
+├── scenes/props_demo.json       props: whiteboard lesson, floating gym props, chalkboard
 └── tools/
     ├── render.js                scene JSON → MP4 or PNG still (Playwright + ffmpeg)
     ├── serve.js                 local server for player.html / gallery.html
@@ -58,7 +59,7 @@ Fast low-res preview: add `--scale 0.5`. Render a slice: `--from 3 --to 8`.
 | Layer | What it is | Edit it by |
 |---|---|---|
 | **Parts** (`assets/parts/*.svg`) | Flat vector traces of your drawings. Every path carries a palette class (`.ink .stone .stone-mid .stone-sh .stone-hi .toga .toga-sh .toga-hi`) | Opening the SVG in any vector editor; recolouring by changing the class colours |
-| **Palette** | 8 colours sampled from your sheets: ink `#0B0607`, stone `#988883`, stone-mid `#7F706B`, stone-shadow `#483B3A`, stone-highlight `#B8A79E`, toga `#4A0A10`, toga-shadow `#260A0C`, toga/laurel highlight `#741219` | `PALETTE` in `tools/vectorize.py` (permanent) or `"palette": {"toga": "#1C3F8A"}` in a scene (per video) |
+| **Palette** | 8 character colours (props add 11 more: paper, gear, metal, tan, leather ± shades) sampled from your sheets: ink `#0B0607`, stone `#988883`, stone-mid `#7F706B`, stone-shadow `#483B3A`, stone-highlight `#B8A79E`, toga `#4A0A10`, toga-shadow `#260A0C`, toga/laurel highlight `#741219` | `PALETTE` in `tools/vectorize.py` (permanent) or `"palette": {"toga": "#1C3F8A"}` in a scene (per video) |
 | **Anchors** | Every pose knows where its feet are and how tall a full standing body is in its own drawing, so pose swaps stay the same size with feet planted | Automatic (`tools/build_library.py`) |
 | **Engine** | Timeline of events → frame at any time `t` | Scene JSON (below) |
 
@@ -90,7 +91,7 @@ A scene is JSON: canvas settings plus a list of timed events. Coordinates are **
 | **nudge** | `actor`, `kind`: `hop`·`squash`·`shake`·`lean`·`grow`, `dur`, `amp`, `dir` | Quick emphasis on a held pose |
 | **closeup** | `name` (a `head_*` part, or `null` to end), `side`: `left`·`center`·`right` (or `x`), `fill` (bust height, default 0.98), `enter`: `cut`·`punch`·`pop`·`rise`, `shake`, `flip`, `bg` | Full-screen bust shot. Consecutive close-ups auto-"punch" on expression change |
 | **text** | `id`, `text` (or `words` array, `"\n"` = line break), `font`: `marker`·`caps`·`impact`·`roman`, `size`, `color`, `stroke`, `strokeWidth`, `x`, `y`, `anchor`: `start`·`middle`·`end`, `maxWidth`, `lineHeight`, `every` (seconds between words; `0` = all at once), `enter`: `pop`·`fade`·`rise`, `upper`, `rotate`, `wobble`, `screen` | Remove with `{"type":"text","id":"…","off":true,"exit":"pop"}`. `screen:true` ignores the camera and draws over close-ups |
-| **prop** | `id`, `kind`: `arrow` (`from`,`to`,`bend`,`head`), `circle` (`at`,`rx`,`ry`), `x`/`check` (`at`,`size`), `underline` (`from`,`to`), `panel` (`from`,`to`,`fill`,`radius`,`stroke`), `part` (`name`,`at`,`size`), `svg` (`markup`,`at`,`size`); plus `color`, `width`, `enter`: `draw`·`pop`·`fade`, `dur`, `float`, `layer:"back"`, `screen` | Hand-drawn marks draw on stroke by stroke. `panel` with `layer:"back"` builds split-screen backgrounds. `svg` drops in any icon or logo |
+| **prop** | `id`, `kind`: `part` (`name` = a `prop_*` / any part, `at`, `size`/`width`, `rotate`, `flip`, `text`… see Props), `arrow` (`from`,`to`,`bend`,`head`), `circle` (`at`,`rx`,`ry`), `x`/`check` (`at`,`size`), `underline` (`from`,`to`), `panel` (`from`,`to`,`fill`,`radius`,`stroke`), `part` (`name`,`at`,`size`), `svg` (`markup`,`at`,`size`); plus `color`, `width`, `enter`: `draw`·`pop`·`fade`, `dur`, `float`, `layer:"back"`, `screen` | Hand-drawn marks draw on stroke by stroke. `panel` with `layer:"back"` builds split-screen backgrounds. `svg` drops in any icon or logo |
 | **camera** | `zoom`, `x`, `y` (focus point), `rotate`, `dur`, `ease`: `linear`·`in`·`out`·`inOut` | `dur: 0` = instant punch-in / reset |
 | **shake** | `dur`, `amp` (px) | Screen shake, close-ups included |
 | **bg** | `color`, `dur` | Background colour change (cut or fade) |
@@ -125,6 +126,25 @@ Open `engine/gallery.html` for the visual list.
     - `head_calm` · `head_glance` · `head_chin_up` · `head_yell` · `head_smile`
     - `head_defeated` · `head_surprised` · `head_laughing` · `head_tired` · `head_pleading`
     - `head_disgust` · `head_afraid` · `head_smirk` · `head_angry`
+
+## Props
+
+25 props, all on the same flat palette as the character:
+- **Teaching:** `prop_whiteboard`\*, `prop_flipchart`\*, `prop_clipboard`\*, `prop_chalkboard`\*, `prop_scroll`\*, `prop_pointer`, `prop_marker`
+- **Books:** `prop_book_open`, `prop_book`
+- **Gym:** `prop_dumbbell`, `prop_barbell`, `prop_plate`, `prop_kettlebell`, `prop_shaker`, `prop_bottle`, `prop_towel`, `prop_band`, `prop_jump_rope`, `prop_stopwatch`
+- **Everyday:** `prop_phone`, `prop_headphones`, `prop_sunglasses`, `prop_coffee`, `prop_backpack`, `prop_wallet`
+
+\* writable: the board's writing area was detected automatically.
+
+```json
+{ "t": 0, "type": "prop", "id": "wb", "kind": "part", "name": "prop_whiteboard", "at": [0.63, 0.5], "size": 0.78,
+  "enter": "pop", "layer": "back", "text": "Sleep 8 hours. Lift 4x a week.", "font": "marker", "every": 0.28, "textDelay": 0.9 }
+```
+- **Placement:** `at` is the centre of the visible drawing. Size it with `size` (height as a fraction of the frame) or `width` (fraction of frame width). Also takes `rotate` (degrees), `flip`, `float` (gentle bob), `enter` / `exit` (`pop`, `fade`, `drop`...), and `layer: "back"` to put it behind the character.
+- **Board text** (writable props only): the text auto-fits the writing area and builds word by word. Options: `font`, `every`, `textDelay` (seconds after the prop appears), `textSize` (force a size), `textColor`, `padding`, `textEnter`. Chalkboard text defaults to light. Board text is skipped if the prop is rotated.
+- **Removing:** `{"type":"prop","id":"wb","off":true,"exit":"pop"}` also removes its board text.
+- **New props:** add them to a transparent sheet named `prop_<name>`. If the prop is writable, add it to `SURFACE_ROLE` in `build_library.py`.
 
 ## Regenerating / adding poses (Python pipeline)
 

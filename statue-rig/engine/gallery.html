@@ -18,10 +18,11 @@
 </head>
 <body>
 <header><h1>Statue rig — parts library</h1><p>Every pose and expression available to scenes. Names are what you put in <code>"name"</code>.</p></header>
-<h2>Palette (CSS classes — edit in <code>tools/vectorize.py</code> or override per scene with <code>"palette"</code>)</h2>
+<h2>Palette (CSS classes — edit in <code>tools/vectorize.py</code> or override per scene with <code>"palette"</code>; the last 11 are prop-only)</h2>
 <div class="pal" id="pal"></div>
 <h2>Poses</h2><div class="grid" id="poses"></div>
 <h2>Heads / expressions (close-ups)</h2><div class="grid" id="heads"></div>
+<h2>Props (use with <code>{"type":"prop","kind":"part","name":…}</code>; boards marked “writable” take <code>"text"</code>)</h2><div class="grid" id="props"></div>
 <script src="library.js"></script>
 <script>
   const S = window.STATUE, NS = 'http://www.w3.org/2000/svg';
@@ -31,7 +32,7 @@
   for (const [r, c] of Object.entries(S.palette)) document.getElementById('pal').insertAdjacentHTML('beforeend', `<span class="sw"><i style="background:${c}"></i><code>.${r}</code> ${c}</span>`);
   for (const [n, p] of Object.entries(S.parts)) {
     const [x0, y0, x1, y1] = p.bbox, pad = 10;
-    document.getElementById(p.kind === 'pose' ? 'poses' : 'heads').insertAdjacentHTML('beforeend',
+    document.getElementById(p.kind === 'pose' ? 'poses' : p.kind === 'prop' ? 'props' : 'heads').insertAdjacentHTML('beforeend',
       `<figure><svg viewBox="${x0 - pad} ${y0 - pad} ${x1 - x0 + 2 * pad} ${y1 - y0 + 2 * pad}" role="img" aria-label="${n}"><use href="#${n}" width="${p.w}" height="${p.h}"/></svg><figcaption><code>${n}</code><br>${p.desc}</figcaption></figure>`);
   }
 </script>
