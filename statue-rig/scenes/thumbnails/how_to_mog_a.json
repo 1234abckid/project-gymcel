@@ -1,0 +1,93 @@
+{
+ "width": 1280,
+ "height": 720,
+ "fps": 30,
+ "duration": 2,
+ "groundShadow": true,
+ "title": "How to mog \u2014 A (contrast)",
+ "background": {
+  "color": "#ECE4D6",
+  "grain": 0,
+  "vignette": 0.25
+ },
+ "events": [
+  {
+   "t": 0,
+   "type": "pose",
+   "name": "pose_hands_hips",
+   "x": 0.76,
+   "ground": 1.02,
+   "height": 1.0,
+   "idle": false
+  },
+  {
+   "t": 0,
+   "type": "pose",
+   "actor": "loser",
+   "name": "pose_sit_despair",
+   "x": 0.36,
+   "ground": 0.97,
+   "height": 0.56,
+   "idle": false
+  },
+  {
+   "t": 0,
+   "type": "text",
+   "id": "h1",
+   "text": "HOW TO",
+   "font": "caps",
+   "size": 140,
+   "x": 0.035,
+   "y": 0.11,
+   "anchor": "start",
+   "color": "#141010",
+   "every": 0
+  },
+  {
+   "t": 0,
+   "type": "text",
+   "id": "h2",
+   "text": "MOG",
+   "font": "caps",
+   "size": 360,
+   "x": 0.03,
+   "y": 0.39,
+   "anchor": "start",
+   "color": "#C8141E",
+   "every": 0,
+   "stroke": "#141010",
+   "strokeWidth": 14
+  },
+  {
+   "t": 0,
+   "type": "text",
+   "id": "l1",
+   "text": "MOGGED",
+   "font": "caps",
+   "size": 84,
+   "x": 0.12,
+   "y": 0.72,
+   "color": "#141010",
+   "every": 0
+  },
+  {
+   "t": 0,
+   "type": "prop",
+   "id": "a1",
+   "kind": "arrow",
+   "from": [
+    0.19,
+    0.76
+   ],
+   "to": [
+    0.27,
+    0.8
+   ],
+   "color": "#C8141E",
+   "width": 10,
+   "head": 28,
+   "bend": -0.2,
+   "enter": "cut"
+  }
+ ]
+}

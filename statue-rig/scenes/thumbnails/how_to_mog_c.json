@@ -1,0 +1,80 @@
+{
+ "width": 1280,
+ "height": 720,
+ "fps": 30,
+ "duration": 2,
+ "groundShadow": true,
+ "title": "How to mog \u2014 C (dark contrast)",
+ "background": {
+  "color": "#2A0A0D",
+  "grain": 0,
+  "vignette": 0.45
+ },
+ "events": [
+  {
+   "t": 0,
+   "type": "pose",
+   "name": "pose_front_proud",
+   "x": 0.74,
+   "ground": 1.03,
+   "height": 1.02,
+   "idle": false
+  },
+  {
+   "t": 0,
+   "type": "pose",
+   "actor": "loser",
+   "name": "pose_kneel",
+   "x": 0.33,
+   "ground": 0.98,
+   "height": 0.46,
+   "idle": false
+  },
+  {
+   "t": 0,
+   "type": "text",
+   "id": "h1",
+   "text": "HOW TO MOG",
+   "font": "caps",
+   "size": 150,
+   "x": 0.035,
+   "y": 0.13,
+   "anchor": "start",
+   "color": "#ECE4D6",
+   "every": 0
+  },
+  {
+   "t": 0,
+   "type": "text",
+   "id": "l1",
+   "text": "YOU",
+   "font": "caps",
+   "size": 130,
+   "x": 0.12,
+   "y": 0.55,
+   "color": "#C8141E",
+   "every": 0,
+   "stroke": "#ECE4D6",
+   "strokeWidth": 8
+  },
+  {
+   "t": 0,
+   "type": "prop",
+   "id": "a1",
+   "kind": "arrow",
+   "from": [
+    0.17,
+    0.62
+   ],
+   "to": [
+    0.25,
+    0.7
+   ],
+   "color": "#ECE4D6",
+   "width": 10,
+   "head": 28,
+   "bend": -0.2,
+   "enter": "cut"
+  }
+ ]
+}

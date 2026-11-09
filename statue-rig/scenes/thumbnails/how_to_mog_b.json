@@ -1,0 +1,68 @@
+{
+ "width": 1280,
+ "height": 720,
+ "fps": 30,
+ "duration": 2,
+ "groundShadow": true,
+ "title": "How to mog \u2014 B (smirk close-up)",
+ "background": {
+  "color": "#2A0A0D",
+  "grain": 0,
+  "vignette": 0.4
+ },
+ "events": [
+  {
+   "t": 0,
+   "type": "closeup",
+   "name": "head_smirk",
+   "side": "right",
+   "x": 0.7,
+   "fill": 1.05
+  },
+  {
+   "t": 0,
+   "type": "text",
+   "id": "h1",
+   "text": "MOG",
+   "font": "caps",
+   "size": 400,
+   "x": 0.035,
+   "y": 0.33,
+   "anchor": "start",
+   "color": "#ECE4D6",
+   "every": 0,
+   "screen": true
+  },
+  {
+   "t": 0,
+   "type": "prop",
+   "id": "p1",
+   "kind": "panel",
+   "from": [
+    0.03,
+    0.6
+   ],
+   "to": [
+    0.47,
+    0.83
+   ],
+   "fill": "#C8141E",
+   "radius": 6,
+   "screen": true,
+   "enter": "cut"
+  },
+  {
+   "t": 0,
+   "type": "text",
+   "id": "h2",
+   "text": "EVERYONE.",
+   "font": "caps",
+   "size": 150,
+   "x": 0.25,
+   "y": 0.72,
+   "color": "#ECE4D6",
+   "every": 0,
+   "screen": true
+  }
+ ]
+}
